@@ -1,0 +1,16 @@
+.googlelogo {
+  font-size: 25px !important;
+  color: #fff !important;
+}
+.facebooklogo {
+  font-size: 25px !important;
+  color: rgb(0, 119, 255) !important;
+}
+.login:hover .googlelogo {
+  transform: rotate(360deg);
+  transition: 1s;
+}
+.login:hover .facebooklogo {
+  transform: rotate(360deg);
+  transition: 1s;
+}

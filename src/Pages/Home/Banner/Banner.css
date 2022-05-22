@@ -1,0 +1,16 @@
+.heros {
+  position: relative;
+}
+.heros::before {
+  content: "";
+  background-image: url(https://img.freepik.com/free-photo/close-up-network-cable_93675-131994.jpg?size=626&ext=jpg&query=internet%20connection&position=41&from_view=search&uid=R69135820&ga=GA1.1.986760642.1645113205);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: .15;
+
+}

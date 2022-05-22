@@ -1,0 +1,15 @@
+.reviewContainer {
+  position: relative;
+}
+.reviewContainer::before {
+  content: "";
+  background-image: url("../../../assets/icons/quote.svg");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 90%;
+  opacity: 1;
+}
