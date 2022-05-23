@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
@@ -9,26 +12,31 @@ const Register = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,reset
+    handleSubmit,
+    reset,
   } = useForm();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
-    const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
+  const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfermPassword, setShowConfermPassword] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let authError;
   let passworderror;
-  if (loading||updating) {
+  if (loading || updating) {
     return <Loading></Loading>;
   }
-  if (error||updateerror) {
-    authError = <small className="text-red-500">{error?.message||updateerror?.message}</small>;
+  if (error || updateerror) {
+    authError = (
+      <small className="text-red-500">
+        {error?.message || updateerror?.message}
+      </small>
+    );
   }
   if (user) {
     console.log(user);
   }
-  const onSubmit = async(data) => {
+  const onSubmit = async (data) => {
     if (data.password !== data.confermpassword) {
       passworderror = (
         <small className="text-red-500">Password didn't match!</small>
@@ -37,9 +45,9 @@ const Register = () => {
     }
     console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name });
+    await updateProfile({ displayName: data.name,  photoURL: data.photoURL});
     console.log(`update done`);
-    navigate('/about')
+    navigate("/about");
     reset();
   };
   return (
@@ -110,6 +118,30 @@ const Register = () => {
                 {errors.email?.type === "pattern" && (
                   <span className="label-text-alt text-red-500">
                     {errors.email.message}
+                  </span>
+                )}
+              </label>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                {...register("photoURL", {
+                  required: {
+                    value: true,
+                    message: "photo URL is required",
+                  },
+                })}
+                type="text"
+                placeholder="photo URL"
+                className="input input-bordered"
+              />
+              <label className="label">
+                {errors.photoURL?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.photoURL.message}
                   </span>
                 )}
               </label>
@@ -192,12 +224,12 @@ const Register = () => {
                 className="input input-bordered"
               />
               <p
-              onClick={() => setShowConfermPassword(!showConfermPassword)}
-              className="absolute top-12 right-5 translate-middle-y"
-              style={{ cursor: "pointer" }}
-            >
-              🗝
-            </p>
+                onClick={() => setShowConfermPassword(!showConfermPassword)}
+                className="absolute top-12 right-5 translate-middle-y"
+                style={{ cursor: "pointer" }}
+              >
+                🗝
+              </p>
               <label className="label">
                 {errors.confermpassword?.type === "required" && (
                   <span className="label-text-alt text-red-500">

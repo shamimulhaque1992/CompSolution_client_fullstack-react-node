@@ -7,6 +7,7 @@ import { signOut } from "firebase/auth";
 
 
 const Navbar = () => {
+  
   const [user] = useAuthState(auth);
   const handleSignOut = ()=> {
     signOut(auth)
@@ -132,7 +133,7 @@ const Navbar = () => {
               <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    src="https://api.lorem.space/image/face?hash=33791"
+                    src={user?.photoURL?(user.photoURL):""}
                     alt=""
                   />
                 </div>

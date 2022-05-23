@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
+import auth from "../../firebase.init";
 
 const Purchase = () => {
+  const [user] = useAuthState(auth);
   const { toolId } = useParams();
 
   const [tools, setTools] = useState({});
@@ -23,6 +26,7 @@ const Purchase = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                value={this.state.user?.email}
                 type="text"
                 placeholder="email"
                 className="input input-bordered"
