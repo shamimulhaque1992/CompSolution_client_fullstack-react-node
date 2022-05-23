@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import "./Login.css";
@@ -15,27 +15,37 @@ const Login = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,reset
+    handleSubmit,
+    reset,
   } = useForm();
 
   const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
-    const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   let authError;
-    if(loading || gloading){
-      return <Loading></Loading>
+  useEffect(() => {
+    if (user || guser) {
+      navigate(from, { replace: true });
     }
-  if(error || gerror){
-    authError = <small className="text-red-500">{error?.message || gerror?.message}</small>
+  }, [user, guser, from, navigate]);
+  if (loading || gloading) {
+    return <Loading></Loading>;
   }
-  if(user || guser){
-    console.log(user || guser);
+  if (error || gerror) {
+    authError = (
+      <small className="text-red-500">
+        {error?.message || gerror?.message}
+      </small>
+    );
   }
 
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
-    reset()
+    reset();
   };
   return (
     <div>
@@ -129,7 +139,10 @@ const Login = () => {
             </div>
 
             <label className="label">
-              <Link to="/forgotpassword" className="label-text-alt link link-hover">
+              <Link
+                to="/forgotpassword"
+                className="label-text-alt link link-hover"
+              >
                 Forgot password?
               </Link>
             </label>
