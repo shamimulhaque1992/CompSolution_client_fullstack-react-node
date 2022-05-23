@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useParams } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const Purchase = () => {
   const {
@@ -10,7 +11,6 @@ const Purchase = () => {
     formState: { errors },
     handleSubmit,
     reset,
-    control,
   } = useForm();
   const [user] = useAuthState(auth);
   // console.log(user);
@@ -24,7 +24,7 @@ const Purchase = () => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setTools(data));
-  }, [url]);
+  }, [url,tools]);
 
   const quantityControlar = () => {
     const q = document.getElementById("quantity");
@@ -42,6 +42,30 @@ const Purchase = () => {
 
   const onSubmit = async (data) => {
     await console.log(data);
+
+    const orders = {
+      productName: tools.title,
+      productID: tools._id,
+      customerName: data.name,
+      customerEmail: data.email,
+      customerAddress: data.address,
+      customerPhone: data.phonenumber,
+      porductQuantity: data.quantity,
+      paymentMethod: data.paymentMethod
+    }
+
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orders),
+    })
+      .then((response) => response.json())
+      .then(data=>{
+        console.log(data);
+        toast.success("Your order is recorded successfully!")
+      });
 
     reset();
   };
@@ -188,6 +212,38 @@ const Purchase = () => {
                     {errors.quantity?.type === "required" && (
                       <span className="label-text-alt text-red-500">
                         {errors.quantity.message}
+                      </span>
+                    )}
+                  </label>
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Payment Method</span>
+                  </label>
+                  <select
+                    {...register("paymentMethod", {
+                      required: {
+                        value: true,
+                        message: "paymentMethod is required",
+                      },
+                    })}
+                    
+                    type="number"
+                    placeholder="payment method"
+                    className="input input-bordered"
+                  >
+                    <option value="bikash">Bikash</option>
+                    <option value="roket">Roket</option>
+                    <option value="nogod">Nogod</option>
+                    <option value="upayache">Upayache</option>
+                    <option value="dbbl">DBBL</option>
+                    <option value="kash">Kash</option>
+                  </select>
+                  <label className="label">
+                    {errors.paymentMethod?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.paymentMethod.message}
                       </span>
                     )}
                   </label>

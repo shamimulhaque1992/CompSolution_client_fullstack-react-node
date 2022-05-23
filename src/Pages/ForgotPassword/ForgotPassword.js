@@ -2,14 +2,15 @@ import React from "react";
 import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.init";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import Loading from "../Shared/Loading/Loading";
 
 const ForgotPassword = () => {
   const {
     register,
     formState: { errors },
-    handleSubmit,reset
+    handleSubmit,
+    reset,
   } = useForm();
   const [sendPasswordResetEmail, sending, error] =
     useSendPasswordResetEmail(auth);
@@ -18,22 +19,18 @@ const ForgotPassword = () => {
     if (data) {
       // console.log(data);
       sendPasswordResetEmail(data.email);
-      toast("Check your email");
+      toast.success("Check your email");
       reset();
     } else {
-      toast("Please enter email address");
+      toast.error("Please enter email address");
     }
   };
   let authError;
   if (error) {
-    authError = (
-      <small className="text-red-500">
-        {error?.message}
-      </small>
-    );
+    authError = <small className="text-red-500">{error?.message}</small>;
   }
   if (sending) {
-    return <Loading></Loading>
+    return <Loading></Loading>;
   }
 
   return (
@@ -84,8 +81,6 @@ const ForgotPassword = () => {
               type="submit"
               value="Reset"
             ></input>
-            
-            <ToastContainer />
           </form>
         </div>
       </div>
