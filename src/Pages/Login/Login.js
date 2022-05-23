@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
@@ -9,21 +9,38 @@ import {
   useSignInWithFacebook,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
+import Loading from "../Shared/Loading/Loading";
 
 const Login = () => {
-  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit,reset
   } = useForm();
+
+  const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+    const [showPassword, setShowPassword] = useState(false);
+  let authError;
+    if(loading || gloading){
+      return <Loading></Loading>
+    }
+  if(error || gerror){
+    authError = <small className="text-red-500">{error?.message || gerror?.message}</small>
+  }
+  if(user || guser){
+    console.log(user || guser);
+  }
+
   const onSubmit = (data) => {
-    console.log(data);
+    signInWithEmailAndPassword(data.email, data.password);
+    reset()
   };
   return (
     <div>
       <h1 className="text-3xl text-primary mb-5">Login!</h1>
-      <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+      <div className="card mx-auto flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mb-20">
         <div className="card-body">
           {" "}
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -60,7 +77,7 @@ const Login = () => {
               </label>
             </div>
 
-            <div className="form-control">
+            <div className="form-control relative">
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
@@ -72,18 +89,26 @@ const Login = () => {
                   },
                   pattern: {
                     value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/,
-                    message: "Maximum 20 character, at least one numeric digit, one uppercase and one lowercase letter",
+                    message:
+                      "Maximum 20 character, at least one numeric digit, one uppercase and one lowercase letter",
                   },
-                  
+
                   minLength: {
                     value: 6,
                     message: "Must be at least 6 characters or more",
                   },
                 })}
-                type="password"
+                type={showPassword ? "text" : "password"}
                 placeholder="password"
                 className="input input-bordered"
               />
+              <p
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-12 right-5 translate-middle-y"
+                style={{ cursor: "pointer" }}
+              >
+                🗝
+              </p>
               <label className="label">
                 {errors.password?.type === "required" && (
                   <span className="label-text-alt text-red-500">
@@ -104,10 +129,11 @@ const Login = () => {
             </div>
 
             <label className="label">
-              <Link to="/register" className="label-text-alt link link-hover">
+              <Link to="/forgotpassword" className="label-text-alt link link-hover">
                 Forgot password?
               </Link>
             </label>
+            {authError}
             <input
               className="btn btn-primary w-full max-w-xs"
               type="submit"

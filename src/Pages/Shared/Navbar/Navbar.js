@@ -1,9 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-const user = false;
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from "../../../firebase.init";
+import { signOut } from "firebase/auth";
+
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
+  const handleSignOut = ()=> {
+    signOut(auth)
+  };
   const navitem = (
     <>
       <li>
@@ -144,7 +151,7 @@ const Navbar = () => {
                   <Link to="/settings">Settings</Link>
                 </li>
                 <li>
-                  <Link to="/" className="btn btn-sm btn-ghost text-lg normal-case justify-start pt-0">Logout</Link>
+                  <Link to="/" onClick={handleSignOut} className="btn btn-sm btn-ghost text-lg normal-case justify-start pt-0">Logout</Link>
                 </li>
               </ul>
             </>
