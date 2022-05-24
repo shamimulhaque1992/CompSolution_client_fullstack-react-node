@@ -9,7 +9,7 @@ const Dashboard = () => {
         {/* <!-- Page content here --> */}
         <h1 className="text-2xl text-primary">Dashboard</h1>
         <Outlet></Outlet>
-        <div className="drawerbtn absolute top-80 ml-2">
+        <div className="drawerbtn absolute z-20 top-80 ml-2">
           <label for="my-drawer-2" class="btn btn-ghost drawer-button lg:hidden mt-0 pt-0">
             <i class="fa-solid fa-angles-right"></i>
           </label>
@@ -24,6 +24,9 @@ const Dashboard = () => {
           </li>
           <li>
             <Link to="/dashboard/addreview">Add Reviews</Link>
+          </li>
+          <li>
+            <Link to="/dashboard/makeadmin">Authorization</Link>
           </li>
         </ul>
       </div>

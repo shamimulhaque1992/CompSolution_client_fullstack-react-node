@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useUpdateProfile,
@@ -21,11 +21,32 @@ const Register = () => {
   const [updateProfile, updating, updateerror] = useUpdateProfile(auth);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfermPassword, setShowConfermPassword] = useState(false);
-  const [token] = useToken(user)
-
+  const [token] = useToken(user);
   const navigate = useNavigate();
   let authError;
   let passworderror;
+
+  const onSubmit = async (data) => {
+    if (data.password !== data.confermpassword) {
+      passworderror = (
+        <small className="text-red-500">Password didn't match!</small>
+      );
+      return;
+    }
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name, photoURL: data.photoURL });
+    console.log(`update done${data}`);
+    // navigate("/about");
+    reset();
+  };
+
+  useEffect(() => {
+    if (token) {
+      console.log(user);
+      navigate("/home");
+    }
+  }, [navigate, token, user]);
   if (loading || updating) {
     return <Loading></Loading>;
   }
@@ -36,24 +57,7 @@ const Register = () => {
       </small>
     );
   }
-  if (token) {
-    console.log(user);
-    navigate("/home");
-  }
-  const onSubmit = async (data) => {
-    if (data.password !== data.confermpassword) {
-      passworderror = (
-        <small className="text-red-500">Password didn't match!</small>
-      );
-      return;
-    }
-    console.log(data);
-    await createUserWithEmailAndPassword(data.email, data.password);
-    await updateProfile({ displayName: data.name,  photoURL: data.photoURL});
-    console.log(`update done${data}`);
-    // navigate("/about");
-    reset();
-  };
+
   return (
     <div>
       <h1 className="text-3xl text-primary mb-5">Register</h1>

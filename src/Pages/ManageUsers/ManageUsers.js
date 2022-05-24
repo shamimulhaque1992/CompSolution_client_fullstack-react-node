@@ -1,0 +1,106 @@
+import React from "react";
+import { useQuery } from "react-query";
+import { toast } from "react-toastify";
+import Loading from "../Shared/Loading/Loading";
+
+const ManageUsers = () => {
+  const { data: users, isloading,refetch } = useQuery("users", () =>
+    fetch("http://localhost:5000/user", {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`
+        }
+    }).then((res) => res.json())
+  );
+  if (isloading) {
+    return <Loading></Loading>;
+  }
+  const makeAdmin = (user) =>{
+      const {email} =  user;
+      const url = `http://localhost:5000/user/admin/${email}`
+      console.log(url);
+      fetch(url,{
+          method: 'PUT',
+          headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`
+          }
+      })
+      .then((res) => res.json())
+      .then(data => {
+          refetch();
+          toast.success("Admin Authorization given Successfully!")
+          
+      })
+  }
+  return (
+    <div>
+      <h1>manage users{users?.length}</h1>
+      <div class="overflow-x-auto w-full">
+        <table class="table w-full">
+          <thead>
+            <tr>
+              <th>
+                <label>
+                  <input type="checkbox" class="checkbox" />
+                </label>
+              </th>
+              <th>S.NO</th>
+              <th>User ID.</th>
+              <th>Name</th>
+              <th>Make Admin</th>
+              <th>Remove User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users?.map((user, index) => (
+              <tr key={index}>
+                <th>
+                  <label>
+                    <input type="checkbox" class="checkbox" />
+                  </label>
+                </th>
+                <td>{index + 1}</td>
+                <td>{user._id}</td>
+                <td>
+                  <div class="flex items-center space-x-3">
+                    <div class="avatar">
+                      <div class="mask mask-squircle w-12 h-12">
+                        <img
+                          src={user?.photo}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div class="font-bold">{user.name}</div>
+                      <div class="text-sm opacity-50">{user.email}</div>
+                    </div>
+                  </div>
+                </td>
+
+                <th>
+                  {user.role !== "admin" && <button onClick={()=>makeAdmin(user)} class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
+                </th>
+                <th>
+                  <button class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
+                </th>
+              </tr>
+            ))}
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <th></th>
+              <th>S.NO</th>
+              <th>User ID.</th>
+              <th>Name</th>
+              <th>Make Admin</th>
+              <th>Remove User</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default ManageUsers;
