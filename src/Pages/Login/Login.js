@@ -10,6 +10,7 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import Loading from "../Shared/Loading/Loading";
+import useToken from "../../hooks/useToken";
 
 const Login = () => {
   const {
@@ -23,15 +24,16 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [showPassword, setShowPassword] = useState(false);
+  const [token] = useToken(user||guser)
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
   let authError;
   useEffect(() => {
-    if (user || guser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, guser, from, navigate]);
+  }, [user, guser, from, navigate,token]);
   if (loading || gloading) {
     return <Loading></Loading>;
   }

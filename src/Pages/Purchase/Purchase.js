@@ -17,25 +17,27 @@ const Purchase = () => {
   const { toolId } = useParams();
 
   const [tools, setTools] = useState({});
-  const minimumOrder = tools.quantity;
-  const toolsQuantity = tools.price;
+
+  const toolsQuantity = tools.quantity;
+  const minimumOrder = tools.minimumquantity;
   const url = `http://localhost:5000/tools/${toolId}`;
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setTools(data));
-  }, [url,tools]);
+  }, [url, tools]);
 
+  console.log(tools);
   const quantityControlar = () => {
     const q = document.getElementById("quantity");
     const x = parseInt(q.value);
-    if (x > tools.price) {
+    if (x > tools.quantity) {
       alert("No sufficient quantity available");
       return;
-    } else if (x < tools.quantity) {
+    } else if (x < tools.minimumquantity) {
       alert("Minimum quantity not satisfied");
       return;
-    } else if (x > tools.quantity && x < tools.price) {
+    } else if (x > tools.minimumquantity && x < tools.quantity) {
       return q.value;
     }
   };
@@ -46,13 +48,15 @@ const Purchase = () => {
     const orders = {
       productName: tools.title,
       productID: tools._id,
+      productPrice: tools.price,
+      productDescription: tools.description,
       customerName: data.name,
       customerEmail: data.email,
       customerAddress: data.address,
       customerPhone: data.phonenumber,
       porductQuantity: data.quantity,
-      paymentMethod: data.paymentMethod
-    }
+      paymentMethod: data.paymentMethod,
+    };
 
     fetch("http://localhost:5000/order", {
       method: "POST",
@@ -62,9 +66,9 @@ const Purchase = () => {
       body: JSON.stringify(orders),
     })
       .then((response) => response.json())
-      .then(data=>{
+      .then((data) => {
         console.log(data);
-        toast.success("Your order is recorded successfully!")
+        toast.success("Your order is recorded successfully!");
       });
 
     reset();
@@ -94,7 +98,7 @@ const Purchase = () => {
             </p>
             <p class="py-6 w-11/12">
               <strong>Minimum Order Quantity: </strong>
-              {tools.quantity}
+              {tools.minimumquantity}
             </p>
           </div>
 
@@ -228,7 +232,6 @@ const Purchase = () => {
                         message: "paymentMethod is required",
                       },
                     })}
-                    
                     type="number"
                     placeholder="payment method"
                     className="input input-bordered"

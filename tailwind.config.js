@@ -19,6 +19,7 @@ module.exports = {
           accent: "#3A4256",
           neutral: "#3d4451",
           danger: "#ef4444",
+          transparent: "rgba(255, 255, 255, 0)",
           "base-100": "#ffffff",
           // "base-100": "#2A303C",
           info: "#3ABFF8",
