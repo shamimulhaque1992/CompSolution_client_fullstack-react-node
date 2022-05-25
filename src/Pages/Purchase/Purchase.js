@@ -80,7 +80,7 @@ const Purchase = () => {
 
       <div class="hero min-h-screen">
         <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="text-center lg:text-left">
+          <div class="text-center lg:text-left border-2 rounded-md p-3">
             <img
               className="mx-auto mt-5 rounded-2xl w-5/12"
               src={tools.img}
@@ -102,8 +102,8 @@ const Purchase = () => {
             </p>
           </div>
 
-          <div className="card flex-shrink-0 w-full mx-auto max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+          <div className="card flex-shrink-0 w-11/12 bottom-2 mx-auto max-w-sm shadow-2xl bg-base-100">
+            <div className="card-body w-full ">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="text-3xl mb-4">
                   <strong>Order for:</strong>{" "}

@@ -8,10 +8,8 @@ const SingleTool = ({ tool }) => {
     description,
     price,
     quantity,
-    supplyerName,
-    supplyerEmail,
+    minimumquantity,
     img,
-    sellstat,
   } = tool;
   const navigate = useNavigate();
 
@@ -35,13 +33,13 @@ const SingleTool = ({ tool }) => {
             {description.slice(0, 100)}
           </p>
           <p className="text-left">
-            <strong>Price:</strong> ৳ {price} BDT
+            <strong>Price:</strong> ৳{price} BDT
           </p>
           <p className="text-left">
             <strong>Available Quantity:</strong> {quantity}
           </p>
           <p className="text-left">
-            <strong>Minumum Order Quantity:</strong> {supplyerName}
+            <strong>Minumum Order Quantity:</strong> {minimumquantity}
           </p>
           <div className="card-actions justify-center">
             <button

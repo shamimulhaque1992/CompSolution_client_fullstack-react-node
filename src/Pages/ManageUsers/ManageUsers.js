@@ -24,10 +24,20 @@ const ManageUsers = () => {
               authorization: `Bearer ${localStorage.getItem("accessToken")}`
           }
       })
-      .then((res) => res.json())
+      .then((res) => {
+
+          if(res.status===403){
+              toast.error('failed to make an admin')
+          }
+          return res.json()
+          
+          })
       .then(data => {
-          refetch();
+          if(data.modifiedCount>0){
+              refetch();
           toast.success("Admin Authorization given Successfully!")
+          }
+          
           
       })
   }
