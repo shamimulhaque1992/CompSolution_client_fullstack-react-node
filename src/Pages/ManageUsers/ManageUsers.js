@@ -41,6 +41,24 @@ const ManageUsers = () => {
           
       })
   }
+
+  const removeUsers = (user)=>{
+    const email = user.email;
+    const url = `http://localhost:5000/user/${email}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`
+          }
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount) {
+            toast.success('data deleted')
+            refetch()
+          }
+        });
+  }
   return (
     <div>
       <h1>manage users{users?.length}</h1>
@@ -91,7 +109,7 @@ const ManageUsers = () => {
                   {user.role !== "admin" && <button onClick={()=>makeAdmin(user)} class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
                 </th>
                 <th>
-                  <button class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
+                  <button onClick = {()=>removeUsers(user)} class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
                 </th>
               </tr>
             ))}
