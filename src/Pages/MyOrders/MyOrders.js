@@ -107,6 +107,7 @@ const MyOrders = () => {
                     >
                       <i class="fa-solid text-white fa-trash-can text-2xl"></i>
                     </button>
+
                     <button
                       class="btn btn-success ml-2 btn-sm tooltip"
                       data-tip="Update"

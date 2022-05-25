@@ -27,7 +27,7 @@ const Purchase = () => {
       .then((data) => setTools(data));
   }, [url, tools]);
 
-  console.log(tools);
+  
   const quantityControlar = () => {
     const q = document.getElementById("quantity");
     const x = parseInt(q.value);
@@ -41,22 +41,23 @@ const Purchase = () => {
       return q.value;
     }
   };
-
   const onSubmit = async (data) => {
-    await console.log(data);
 
     const orders = {
       productName: tools.title,
       productID: tools._id,
       productPrice: tools.price,
       productDescription: tools.description,
+      productimg: tools.img,
       customerName: data.name,
       customerEmail: data.email,
       customerAddress: data.address,
       customerPhone: data.phonenumber,
       porductQuantity: data.quantity,
       paymentMethod: data.paymentMethod,
+      paymentStatus: "unpaid",
     };
+    console.log(orders);
 
     fetch("http://localhost:5000/order", {
       method: "POST",
@@ -67,7 +68,6 @@ const Purchase = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         toast.success("Your order is recorded successfully!");
       });
 
