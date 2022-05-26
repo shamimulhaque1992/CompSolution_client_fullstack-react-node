@@ -9,7 +9,7 @@ const ManageOrders = () => {
     isloading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("http://localhost:5000/order/availabel", {
+    fetch("https://serene-shelf-91638.herokuapp.com/order/availabel", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,7 +25,7 @@ const ManageOrders = () => {
     const status = {
       paymentStatus: "Delevered",
     };
-    fetch(`http://localhost:5000/status/${_id}`, {
+    fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -151,6 +151,7 @@ const ManageOrders = () => {
               <th>Price</th>
               <th>Payment Method</th>
               <th>Payment Status</th>
+              <th>Transaction ID</th>
               <th>Conferm Order</th>
               <th>Cancle Order</th>
             </tr>

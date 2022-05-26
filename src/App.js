@@ -8,7 +8,6 @@ import Login from "./Pages/Login/Login";
 import RequireAuth from "./Pages/Login/RequireAuth";
 import Purchase from "./Pages/Purchase/Purchase";
 import Register from "./Pages/Register/Register";
-import Reviews from "./Pages/Reviews/Reviews";
 import Footer from "./Pages/Shared/Footer/Footer";
 import Navbar from "./Pages/Shared/Navbar/Navbar";
 import { ToastContainer } from "react-toastify";
@@ -26,17 +25,21 @@ import AddProduct from "./Pages/AddProduct/AddProduct";
 import ManageOrders from "./Pages/ManageOrders/ManageOrders";
 import ManageProduct from "./Pages/ManageProduct/ManageProduct";
 import Payment from "./Pages/Payment/Payment";
+import Blog from "./Pages/Blog/Blog";
+import AllReviews from "./Pages/AllReviews/AllReviews";
+import Notfound from "./Pages/Notfound/Notfound";
 
 function App() {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   return (
-    <div className="App">
+    <div>
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/about" element={<About></About>}></Route>
+        <Route path="/blog" element={<Blog></Blog>}></Route>
         <Route
           path="/purchase/:toolId"
           element={
@@ -102,7 +105,8 @@ function App() {
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
-        <Route path="/reviews" element={<Reviews></Reviews>}></Route>
+        <Route path="/allreviews" element={<AllReviews></AllReviews>}></Route>
+        <Route path="*" element={<Notfound></Notfound>}></Route>
       </Routes>
       <ToastContainer />
       <Footer></Footer>

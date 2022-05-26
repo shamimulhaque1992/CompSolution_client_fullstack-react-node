@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from "react-query";
-import Loading from "../../Shared/Loading/Loading";
+import Loading from "../Shared/Loading/Loading";
 
-const Reviews = () => {
+const AllReviews = () => {
   const {
     data: reviews,
     isloading,
@@ -32,11 +32,11 @@ const Reviews = () => {
       </div>
 
       <div className="grid grid-cols-4 gap-4">
-        {reviews?.slice(0,3).map((review, index) => (
-          <div key={index} className="cursor-pointer card w-11/12 lg:card-side bg-base-100 shadow-xl">
+        {reviews?.map((review) => (
+          <div className="cursor-pointer card w-11/12 lg:card-side bg-base-100 shadow-xl">
             <div className="card-body flex flex-col">
               <div className="">
-                <p className="text-left"><strong>Comments:</strong><br />
+                <p className="text-left">
                   {review.comments}
                 </p>
               </div>
@@ -60,4 +60,4 @@ const Reviews = () => {
   );
 };
 
-export default Reviews;
+export default AllReviews;

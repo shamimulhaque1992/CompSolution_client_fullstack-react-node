@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -18,7 +18,7 @@ const MyOrders = () => {
     isloading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`http://localhost:5000/order?customeremail=${user.email}`, {
+    fetch(`https://serene-shelf-91638.herokuapp.com/order?customeremail=${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -41,7 +41,7 @@ const MyOrders = () => {
   const handleDelete = (id) => {
     const conferm = window.confirm("Are you sure you want to delete?");
     if (conferm) {
-      fetch(`http://localhost:5000/orders/${id}`, {
+      fetch(`https://serene-shelf-91638.herokuapp.com/orders/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -60,7 +60,7 @@ const MyOrders = () => {
 
   /* useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/order?customeremail=${user.email}`, {
+      fetch(`https://serene-shelf-91638.herokuapp.com/order?customeremail=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

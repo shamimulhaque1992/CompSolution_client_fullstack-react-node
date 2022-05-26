@@ -1,8 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loading from "../Shared/Loading/Loading";
 
 const AddReviews = () => {
   const {
@@ -12,7 +10,7 @@ const AddReviews = () => {
     reset,
   } = useForm();
   const onSubmit = async (data) => {
-    const url = `http://localhost:5000/reviews`;
+    const url = `https://serene-shelf-91638.herokuapp.com/reviews`;
     fetch(url, {
       method: "POST",
       headers: {

@@ -1,8 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loading from "../Shared/Loading/Loading";
 
 const AddProduct = () => {
   const {
@@ -12,7 +10,7 @@ const AddProduct = () => {
     reset,
   } = useForm();
   const onSubmit = async (data) => {
-    const url = `http://localhost:5000/tools`;
+    const url = `https://serene-shelf-91638.herokuapp.com/tools`;
     fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },

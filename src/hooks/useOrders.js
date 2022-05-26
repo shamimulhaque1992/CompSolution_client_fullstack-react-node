@@ -7,7 +7,7 @@ const useOrders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-      fetch(`http://localhost:5000/order?customeremail=${user?.email}`, {
+      fetch(`https://serene-shelf-91638.herokuapp.com/order?customeremail=${user?.email}`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
