@@ -55,7 +55,7 @@ const Purchase = () => {
       customerPhone: data.phonenumber,
       porductQuantity: data.quantity,
       paymentMethod: data.paymentMethod,
-      paymentStatus: "Panding",
+      paymentStatus: "Unpaid",
     };
     console.log(orders);
 

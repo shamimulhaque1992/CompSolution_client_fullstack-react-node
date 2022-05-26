@@ -1,14 +1,60 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
+import Loading from "../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const navigate = useNavigate();
-  const [user] = useAuthState(auth);
-  const [orders, setOrders] = useState([]);
-  useEffect(() => {
+  const [user] = useAuthState(auth); /* 
+  const [orders, setOrders] = useState([]); */
+  const {
+    data: orders,
+    isloading,
+    refetch,
+  } = useQuery("orders", () =>
+    fetch(`http://localhost:5000/order?customeremail=${user.email}`, {
+      method: "GET",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => {
+      console.log("res", res);
+      console.log(orders);
+      if (res.status === 401 || res.status === 403) {
+        signOut(auth);
+        localStorage.removeItem("accessToken");
+        navigate("/home");
+      }
+      return res.json();
+    })
+  );
+  if (isloading) {
+    return <Loading></Loading>;
+  }
+
+  const handleDelete = (email) => {
+    console.log(email);
+    fetch(`http://localhost:5000/orders/${email}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount) {
+          toast.success("deleted successfully");
+          refetch();
+        }
+      });
+  };
+
+  /* useEffect(() => {
     if (user) {
       fetch(`http://localhost:5000/order?customeremail=${user.email}`, {
         method: "GET",
@@ -29,7 +75,7 @@ const MyOrders = () => {
           setOrders(data);
         });
     }
-  }, [user, navigate]);
+  }, [user, navigate]); */
 
   return (
     <div>
@@ -102,15 +148,15 @@ const MyOrders = () => {
                   <td className="text-center">
                     {order?.paymentStatus} <br />
                     <span class="badge badge-ghost badge-sm">
-                      {order?.transactionId?order?.transactionId:"N/A"}
+                      {order?.transactionId ? order?.transactionId : "N/A"}
                     </span>
                   </td>
                   <th>
-                    {order?.paymentStatus === "Panding" ? (
+                    {order?.paymentStatus === "Unpaid" ? (
                       <Link to={`/dashboard/payment/${order._id}`}>
                         <button
                           class="btn btn-success btn-sm tooltip"
-                          data-tip="Cancle"
+                          data-tip="Pay"
                         >
                           <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
                         </button>
@@ -118,17 +164,17 @@ const MyOrders = () => {
                     ) : (
                       <button
                         class="btn btn-success btn-sm tooltip btn-disabled"
-                        data-tip="Cancle"
+                        data-tip="Pay"
                       >
                         <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
                       </button>
                     )}
 
-                    <button
-                      class="btn btn-success ml-2 btn-sm tooltip"
-                      data-tip="Update"
+                    <button className={`${order.paymentStatus==="Paid"?"btn-disabled btn btn-error ml-2 btn-sm tooltip":"btn btn-error ml-2 btn-sm tooltip"}`}
+                      onClick={() => handleDelete(order._id)}
+                      data-tip="Delete"
                     >
-                      <i class="fa-solid text-white fa-pen-to-square text-2xl"></i>
+                      <i class="fa-solid text-red fa-trash-can text-white text-2xl"></i>
                     </button>
                   </th>
                 </tr>
@@ -140,7 +186,7 @@ const MyOrders = () => {
                 <th></th>
                 <th></th>
                 <th>Name</th>
-                <th>Products</th>
+                <th>Product</th>
                 <th>Price</th>
                 <th>Total Quantity</th>
                 <th>Payment Method Selected</th>

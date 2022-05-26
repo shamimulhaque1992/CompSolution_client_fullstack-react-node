@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import Loading from "../Shared/Loading/Loading";
 
 const ManageOrders = () => {
@@ -20,6 +21,26 @@ const ManageOrders = () => {
   if (isloading) {
     return <Loading></Loading>;
   }
+  const handleDelevered = (_id) => {
+    const status = {
+      paymentStatus: "Delevered",
+    };
+    fetch(`http://localhost:5000/status/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(status),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Your order is recorded successfully!");
+        refetch();
+        console.log(data);
+      });
+  };
+
   return (
     <div>
       <h1>manage users{orders?.length}</h1>
@@ -41,6 +62,7 @@ const ManageOrders = () => {
               <th>Price</th>
               <th>Payment Method</th>
               <th>Payment Status</th>
+              <th>Conferm Delevery</th>
               <th>Cancle Order</th>
             </tr>
           </thead>
@@ -92,11 +114,13 @@ const ManageOrders = () => {
                 <td>{order.porductQuantity}</td>
                 <td>{order.productPrice}</td>
                 <td>{order.paymentMethod}</td>
+                <td>{order.paymentStatus}</td>
 
                 <th>
                   {order.role !== "admin" && (
                     <button
-                      /* onClick={()=>makeAdmin(order)} */ class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"
+                      onClick={() => handleDelevered(order._id)}
+                      class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"
                     >
                       <i class="fa-solid fa-lock-open text-green"></i>
                       <span>Make Paid</span>
@@ -125,6 +149,7 @@ const ManageOrders = () => {
               <th>Price</th>
               <th>Payment Method</th>
               <th>Payment Status</th>
+              <th>Conferm Order</th>
               <th>Cancle Order</th>
             </tr>
           </tfoot>
