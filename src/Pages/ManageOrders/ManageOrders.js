@@ -62,6 +62,7 @@ const ManageOrders = () => {
               <th>Price</th>
               <th>Payment Method</th>
               <th>Payment Status</th>
+              <th>Transection Id</th>
               <th>Conferm Delevery</th>
               <th>Cancle Order</th>
             </tr>
@@ -115,6 +116,7 @@ const ManageOrders = () => {
                 <td>{order.productPrice}</td>
                 <td>{order.paymentMethod}</td>
                 <td>{order.paymentStatus}</td>
+                <td>{order.transactionId?order.transactionId:"N/A"}</td>
 
                 <th>
                   {order.role !== "admin" && (

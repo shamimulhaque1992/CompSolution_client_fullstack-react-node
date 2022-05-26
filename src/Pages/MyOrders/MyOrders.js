@@ -9,7 +9,9 @@ import Loading from "../Shared/Loading/Loading";
 
 const MyOrders = () => {
   const navigate = useNavigate();
-  const [user] = useAuthState(auth); /* 
+  const [user] = useAuthState(auth);
+
+  /* 
   const [orders, setOrders] = useState([]); */
   const {
     data: orders,
@@ -36,22 +38,24 @@ const MyOrders = () => {
     return <Loading></Loading>;
   }
 
-  const handleDelete = (email) => {
-    console.log(email);
-    fetch(`http://localhost:5000/orders/${email}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.deletedCount) {
-          toast.success("deleted successfully");
-          refetch();
-        }
-      });
+  const handleDelete = (id) => {
+    const conferm = window.confirm("Are you sure you want to delete?");
+    if (conferm) {
+      fetch(`http://localhost:5000/orders/${id}`, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount) {
+            toast.success("deleted successfully");
+            refetch();
+          }
+        });
+    }
   };
 
   /* useEffect(() => {
@@ -170,7 +174,12 @@ const MyOrders = () => {
                       </button>
                     )}
 
-                    <button className={`${order.paymentStatus==="Paid"?"btn-disabled btn btn-error ml-2 btn-sm tooltip":"btn btn-error ml-2 btn-sm tooltip"}`}
+                    <button
+                      className={`${
+                        order.paymentStatus === "Paid"
+                          ? "btn-disabled btn btn-error ml-2 btn-sm tooltip"
+                          : "btn btn-error ml-2 btn-sm tooltip"
+                      }`}
                       onClick={() => handleDelete(order._id)}
                       data-tip="Delete"
                     >
