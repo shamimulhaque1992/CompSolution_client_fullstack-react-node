@@ -15,7 +15,8 @@ const ManageOrders = () => {
       },
     }).then((res) => res.json())
   );
-  console.log("ok", orders);
+  console.log(orders);
+
   if (isloading) {
     return <Loading></Loading>;
   }
@@ -83,7 +84,7 @@ const ManageOrders = () => {
                     <div>
                       <div class="font-bold">{order?.productName}</div>
                       <div class="text-sm opacity-50">
-                        {order?.productDescription.slice(0,40)}
+                        {order?.productDescription.slice(0, 40)}
                       </div>
                     </div>
                   </div>
@@ -103,10 +104,7 @@ const ManageOrders = () => {
                   )}
                 </th>
                 <th>
-                  <button
-                    onClick={() => order(order)}
-                    class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"
-                  >
+                  <button class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center">
                     <i class="fa-solid text-red fa-trash-can"></i>
                     <span>Cancle Order</span>
                   </button>

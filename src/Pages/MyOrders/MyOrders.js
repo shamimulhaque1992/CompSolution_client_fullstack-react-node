@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 
 const MyOrders = () => {
@@ -63,7 +63,7 @@ const MyOrders = () => {
               {/* <!-- row 1 --> */}
 
               {orders.map((order, index) => (
-                <tr key={order._id}>
+                <tr key={order?._id}>
                   <th>
                     <label>
                       <input type="checkbox" class="checkbox" />
@@ -90,23 +90,39 @@ const MyOrders = () => {
                     </div>
                   </td>
                   <td>
-                    {order.productName}
+                    {order?.productName}
                     <br />
                     <span class="badge badge-ghost badge-sm">
-                      {order.productDescription.slice(0, 50)}
+                      {order?.productDescription.slice(0, 50)}
                     </span>
                   </td>
-                  <td>{order.productPrice}</td>
-                  <td>{order.porductQuantity}</td>
-                  <td>{order.paymentMethod}</td>
-                  <td>Paid</td>
+                  <td>{order?.productPrice}</td>
+                  <td>{order?.porductQuantity}</td>
+                  <td>{order?.paymentMethod}</td>
+                  <td className="text-center">
+                    {order?.paymentStatus} <br />
+                    <span class="badge badge-ghost badge-sm">
+                      {order?.transactionId?order?.transactionId:"N/A"}
+                    </span>
+                  </td>
                   <th>
-                    <button
-                      class="btn btn-error btn-sm tooltip"
-                      data-tip="Cancle"
-                    >
-                      <i class="fa-solid text-white fa-trash-can text-2xl"></i>
-                    </button>
+                    {order?.paymentStatus === "Panding" ? (
+                      <Link to={`/dashboard/payment/${order._id}`}>
+                        <button
+                          class="btn btn-success btn-sm tooltip"
+                          data-tip="Cancle"
+                        >
+                          <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
+                        </button>
+                      </Link>
+                    ) : (
+                      <button
+                        class="btn btn-success btn-sm tooltip btn-disabled"
+                        data-tip="Cancle"
+                      >
+                        <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
+                      </button>
+                    )}
 
                     <button
                       class="btn btn-success ml-2 btn-sm tooltip"

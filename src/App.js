@@ -25,6 +25,7 @@ import useAdmin from "./hooks/useAdmin";
 import AddProduct from "./Pages/AddProduct/AddProduct";
 import ManageOrders from "./Pages/ManageOrders/ManageOrders";
 import ManageProduct from "./Pages/ManageProduct/ManageProduct";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -59,6 +60,7 @@ function App() {
           )}
           {/* <Route index element={<MyOrders></MyOrders>}></Route> */}
           <Route path="addreviews" element={<AddReviews></AddReviews>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="myprofile" element={<MyProfile></MyProfile>}></Route>
           <Route
             path="makeadmin"
