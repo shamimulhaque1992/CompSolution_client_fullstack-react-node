@@ -33,7 +33,7 @@ function App() {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
   return (
-    <div>
+    <div className="App">
       <Navbar></Navbar>
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>

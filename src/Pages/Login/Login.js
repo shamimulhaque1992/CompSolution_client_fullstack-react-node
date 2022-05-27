@@ -31,7 +31,12 @@ const Login = () => {
   let authError;
   useEffect(() => {
     if (token) {
-      navigate(from, { replace: true });
+      if(from){
+        navigate(from, { replace: true });
+      }else{
+        navigate('/')
+      }
+      
     }
   }, [user, guser, from, navigate,token]);
   if (loading || gloading) {

@@ -4,7 +4,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import useToken from "../../hooks/useToken";
 import Loading from "../Shared/Loading/Loading";
@@ -23,6 +23,8 @@ const Register = () => {
   const [showConfermPassword, setShowConfermPassword] = useState(false);
   const [token] = useToken(user);
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   let authError;
   let passworderror;
 
@@ -43,8 +45,14 @@ const Register = () => {
 
   useEffect(() => {
     if (token) {
-      console.log(user);
       navigate("/home");
+      // navigate(from, { replace: true });
+      /* if (from) {
+        navigate(from, { replace: true });
+      } else {
+        console.log(user);
+        navigate("/home");
+      } */
     }
   }, [navigate, token, user]);
   if (loading || updating) {

@@ -35,10 +35,45 @@ const ManageOrders = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        toast.success("Your order is recorded successfully!");
+        toast.success("Delevered Successfully!");
         refetch();
         console.log(data);
       });
+  };
+
+  const handleCancleOrder = (_id) => {
+
+    const conferm = window.confirm('Are you sure you want to remove this order?')
+    if(conferm){
+      fetch(`https://serene-shelf-91638.herokuapp.com/orders/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("The order is deleted successfully!");
+        refetch();
+        console.log(data);
+      });
+    }
+    /* fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        toast.success("Your order is recorded successfully!");
+        refetch();
+        console.log(data);
+      }); */
   };
 
   return (
@@ -130,7 +165,7 @@ const ManageOrders = () => {
                   )}
                 </th>
                 <th>
-                  <button class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center">
+                  <button onClick={()=>handleCancleOrder(order._id)} class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center">
                     <i class="fa-solid text-red fa-trash-can"></i>
                     <span>Cancle Order</span>
                   </button>

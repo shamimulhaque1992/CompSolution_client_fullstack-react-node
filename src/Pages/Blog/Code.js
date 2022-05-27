@@ -3,7 +3,7 @@ import React from 'react';
 const Code = () => {
     return (
         <div>
-            <div class="mockup-code">
+            <div class="mockup-code text-left">
                 <pre data-prefix="$">
                     <code>Code for finding product by name from an Array</code>
                 </pre>

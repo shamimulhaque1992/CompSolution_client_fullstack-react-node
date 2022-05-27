@@ -22,7 +22,6 @@ const MyProfile = () => {
 
   return (
     <div>
-      <h1>This is purchase</h1>
       {users.map((userss, index) => (
         <MyProfileCont key={index} userss={userss}></MyProfileCont>
       ))}
