@@ -2,8 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const MyProfileCont = ({ userss }) => {
-  const { _id, name, email, photo, phone, address, mstatus } = userss;
+const MyProfileCont = ({ userss, refetch }) => {
+  const { _id, name, email, photo, phone, address, mstatus, role } = userss;
   const {
     register,
     formState: { errors },
@@ -31,37 +31,48 @@ const MyProfileCont = ({ userss }) => {
       .then((response) => response.json())
       .then((data) => {
         toast.success("Your order is recorded successfully!");
+        refetch();
       });
 
     reset();
   };
   return (
     <div>
-      <h1>Hello {name}</h1>
-      <div class="hero min-h-screen">
+      <div className="mt-5">
+        {role ? (
+          <i class="fa-solid fa-user-gear text-5xl mb-5"></i>
+        ) : (
+          <i class="fa-solid fa-user text-5xl mb-5"></i>
+        )}
+      </div>
+
+      <h1 className="text-2xl text-black bg-base-100 shadow-2xl w-6/12 mx-auto rounded-md p-4 mb-14">
+        Hello, {name}! <br /> Welcome to your profile
+      </h1>
+      <div class="hero min-h-screen bg-">
         <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="text-center lg:text-left border-2 rounded-md p-3">
+          <div class="text-left border-2 rounded-md bg-base-100 shadow-2xl p-10">
             <img
               className="mx-auto mt-5 rounded-2xl w-5/12"
               src={photo}
               alt=""
             />
+            <p className="text-center">Role: {role ? "Admin" : "User"}</p>
             <p class="py-6 w-11/12">
               <strong>User ID. {_id}</strong>
             </p>
 
-            <p class="py-6 w-11/12"></p>
             <p class="py-6 w-11/12">
-              <strong>Name:{name}</strong>
+              <strong>Name: {name}</strong>
             </p>
             <p class="py-6 w-11/12">
-              <strong>Email:{email} </strong>
+              <strong>Email: {email} </strong>
             </p>
             <p class="py-6 w-11/12">
-              <strong>Address:{address} </strong>
+              <strong>Address: {address} </strong>
             </p>
             <p class="py-6 w-11/12">
-              <strong>Phone No:{phone} </strong>
+              <strong>Phone No: {phone} </strong>
             </p>
           </div>
 
@@ -69,8 +80,13 @@ const MyProfileCont = ({ userss }) => {
             <div className="card-body w-full ">
               <form onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="text-3xl mb-4">
-                  <strong>Update Profile of: {name}</strong>{" "}
-                  <span className="text-primary text-sm">email:{email}</span>
+                  <strong className="mt-4">
+                    Update Your Profile: <br />{" "}
+                    <h1 className="text-xl text-emerald-400 mt-4">{name}</h1>
+                  </strong>{" "}
+                  <span className="text-primary text-sm">
+                    Email: <span className="text-sky-900">{email}</span>
+                  </span>
                 </h1>
 
                 <div className="form-control">
@@ -178,7 +194,7 @@ const MyProfileCont = ({ userss }) => {
                 <div className="form-control mt-6">
                   <input
                     type="submit"
-                    value="Place Order"
+                    value="Update"
                     className="btn btn-primary text-white"
                   />
                 </div>

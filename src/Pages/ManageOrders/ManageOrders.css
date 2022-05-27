@@ -1,0 +1,22 @@
+/* Responsive for carousel */
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  .hideColumnSm {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  
+  .hideColumnMd {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  
+  
+  .hideColumnLg {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1440px) and (max-width: 2560px) {
+  
+}

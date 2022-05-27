@@ -16,30 +16,32 @@ const ManageProduct = () => {
       },
     }).then((res) => res.json())
   );
-  console.log("dsf", tools);
 
   if (isloading) {
     return <Loading></Loading>;
   }
 
-  const handleDelevered = (_id) => {
-    const status = {
-      paymentStatus: "Delevered",
-    };
-    fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(status),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast.success("Your tool is recorded successfully!");
-        refetch();
-        console.log(data);
-      });
+  const handleDeleteProduct = (_id) => {
+    const conferm = window.confirm(
+      "Are you sure you want to remove this order?"
+    );
+    if (conferm) {
+      fetch(`https://serene-shelf-91638.herokuapp.com/tools/${_id}`, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          Accept: "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          toast.success("The order is deleted successfully!");
+          refetch();
+        });
+    }
   };
   return (
     <div>
@@ -73,7 +75,7 @@ const ManageProduct = () => {
                 </th>
                 <td>{index + 1}</td>
                 <td>{tool?._id}</td>
-                
+
                 <td>
                   <div class="flex items-center space-x-3">
                     <div class="avatar">
@@ -87,7 +89,9 @@ const ManageProduct = () => {
                     <div>
                       <div class="font-bold">{tool?.title}</div>
                       <div class="text-sm opacity-50">
-                        {tool?.description?tool?.description.slice(0,40):""}
+                        {tool?.description
+                          ? tool?.description.slice(0, 40)
+                          : ""}
                       </div>
                     </div>
                   </div>
@@ -99,15 +103,15 @@ const ManageProduct = () => {
 
                 <th>
                   <button
-                    onClick={() => handleDelevered(tool._id)}
-                    class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"
+                    onClick={() => handleDeleteProduct(tool._id)}
+                    class="btn hover:text-white btn-error btn-outline btn-sm w-44 flex justify-between items-center"
                   >
-                    <i class="fa-solid fa-lock-open text-green"></i>
-                    <span>Make Paid</span>
+                    <i class="fa-solid text-red fa-trash-can"></i>
+                    <span>Remove Product</span>
                   </button>
                 </th>
                 <th>
-                  <button class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center">
+                  <button class="btn btn-success btn-outline btn-sm w-44 flex justify-between items-center">
                     <i class="fa-solid text-red fa-trash-can"></i>
                     <span>Update tools</span>
                   </button>

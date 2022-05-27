@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import Loading from "../Shared/Loading/Loading";
+import "./ManageOrders.css";
 
 const ManageOrders = () => {
   const {
@@ -42,23 +43,24 @@ const ManageOrders = () => {
   };
 
   const handleCancleOrder = (_id) => {
-
-    const conferm = window.confirm('Are you sure you want to remove this order?')
-    if(conferm){
+    const conferm = window.confirm(
+      "Are you sure you want to remove this order?"
+    );
+    if (conferm) {
       fetch(`https://serene-shelf-91638.herokuapp.com/orders/${_id}`, {
-      method: "DELETE",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        toast.success("The order is deleted successfully!");
-        refetch();
-        console.log(data);
-      });
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          toast.success("The order is deleted successfully!");
+          refetch();
+          console.log(data);
+        });
     }
     /* fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
       method: "DELETE",
@@ -80,24 +82,30 @@ const ManageOrders = () => {
     <div>
       <h1>manage users{orders?.length}</h1>
       <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+        <table class="table w-full text-center">
           <thead>
-            <tr>
+            <tr className="">
               <th>
                 <label>
                   <input type="checkbox" class="checkbox" />
                 </label>
               </th>
               <th>S.NO</th>
-              <th>Order ID.</th>
-              <th>Product ID.</th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Order ID.
+              </th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Product ID.
+              </th>
               <th>User Info.</th>
               <th>Product Info.</th>
-              <th>Order Quantity</th>
-              <th>Price</th>
-              <th>Payment Method</th>
+              <th className="hideColumnSm hideColumnMd">Order Quantity</th>
+              <th className="hideColumnSm hideColumnMd">Price</th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Payment Method
+              </th>
               <th>Payment Status</th>
-              <th>Transection Id</th>
+              <th className="hideColumnSm">Transection Id</th>
               <th>Conferm Delevery</th>
               <th>Cancle Order</th>
             </tr>
@@ -111,8 +119,12 @@ const ManageOrders = () => {
                   </label>
                 </th>
                 <td>{index + 1}</td>
-                <td>{order?._id}</td>
-                <td>{order?.productID}</td>
+                <td className="hideColumnSm hideColumnMd hideColumnLg">
+                  {order?._id}
+                </td>
+                <td className="hideColumnSm hideColumnMd hideColumnLg">
+                  {order?.productID}
+                </td>
                 <td>
                   <div class="flex items-center space-x-3">
                     <div class="avatar">
@@ -147,25 +159,36 @@ const ManageOrders = () => {
                     </div>
                   </div>
                 </td>
-                <td>{order.porductQuantity}</td>
-                <td>{order.productPrice}</td>
-                <td>{order.paymentMethod}</td>
+                <td className="hideColumnSm hideColumnMd">
+                  {order.porductQuantity}
+                </td>
+                <td className="hideColumnSm hideColumnMd">
+                  {order.productPrice}
+                </td>
+                <td className="hideColumnSm hideColumnMd hideColumnLg">
+                  {order.paymentMethod}
+                </td>
                 <td>{order.paymentStatus}</td>
-                <td>{order.transactionId?order.transactionId:"N/A"}</td>
+                <td className="hideColumnSm">
+                  {order.transactionId ? order.transactionId : "N/A"}
+                </td>
 
                 <th>
                   {order.role !== "admin" && (
                     <button
                       onClick={() => handleDelevered(order._id)}
-                      class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"
+                      class="btn btn-success btn-outline btn-sm w-48 flex justify-between items-center"
                     >
                       <i class="fa-solid fa-lock-open text-green"></i>
-                      <span>Make Paid</span>
+                      <span>Conferm Delevery</span>
                     </button>
                   )}
                 </th>
                 <th>
-                  <button onClick={()=>handleCancleOrder(order._id)} class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center">
+                  <button
+                    onClick={() => handleCancleOrder(order._id)}
+                    class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"
+                  >
                     <i class="fa-solid text-red fa-trash-can"></i>
                     <span>Cancle Order</span>
                   </button>
@@ -178,16 +201,22 @@ const ManageOrders = () => {
             <tr>
               <th></th>
               <th>S.NO</th>
-              <th>Order ID.</th>
-              <th>Product ID.</th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Order ID.
+              </th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Product ID.
+              </th>
               <th>User Info.</th>
               <th>Product Info.</th>
-              <th>Order Quantity</th>
-              <th>Price</th>
-              <th>Payment Method</th>
+              <th className="hideColumnSm hideColumnMd">Order Quantity</th>
+              <th className="hideColumnSm hideColumnMd">Price</th>
+              <th className="hideColumnSm hideColumnMd hideColumnLg">
+                Payment Method
+              </th>
               <th>Payment Status</th>
-              <th>Transaction ID</th>
-              <th>Conferm Order</th>
+              <th className="hideColumnSm">Transection Id</th>
+              <th>Conferm Delevery</th>
               <th>Cancle Order</th>
             </tr>
           </tfoot>

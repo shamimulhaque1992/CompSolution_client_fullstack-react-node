@@ -140,11 +140,11 @@ const AddReviews = () => {
                 placeholder="ratings"
                 className="input input-bordered"
               >
-                <option value="Nutral">⭐⭐⭐⭐⭐</option>
-                <option value="Nutral">⭐⭐⭐⭐</option>
-                <option value="Nutral">⭐⭐⭐</option>
-                <option value="NO">⭐⭐</option>
-                <option value="Yes">⭐</option>
+                <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                <option value="⭐⭐⭐">⭐⭐⭐</option>
+                <option value="⭐⭐">⭐⭐</option>
+                <option value="⭐">⭐</option>
               </select>
               <label className="label">
                 {errors.paymentMethod?.type === "required" && (

@@ -11,6 +11,7 @@ const Reviews = () => {
     fetch("https://serene-shelf-91638.herokuapp.com/reviews", {
       method: "GET",
       headers: {
+        "Content-Type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     }).then((res) => res.json())
@@ -31,15 +32,25 @@ const Reviews = () => {
         </h1>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        {reviews?.slice(0,3).map((review, index) => (
+      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+        {reviews?.slice((reviews?.length-3),(reviews?.length+1)).reverse().map((review, index) => (
           <div key={index} className="cursor-pointer card w-11/12 lg:card-side bg-base-100 shadow-xl">
             <div className="card-body flex flex-col">
               <div className="">
-                <p className="text-left"><strong>Comments:</strong><br />
-                  {review.comments}
-                </p>
+                <strong className="text-indigo-300">Comments: </strong>
+                <p className="text-left">{review.comments}</p>
               </div>
+              <p class="text-left">
+                <strong>
+                  Ratings: <span> {review.ratings}</span>
+                </strong>
+              </p>
+              <p class="text-left">
+                <strong>
+                  Recomendation:
+                  <span> {review.recomendation}</span>
+                </strong>
+              </p>
               <div className="flex items-center justify-center">
                 <div className="avatar">
                   <div className="w-10 border-4 border-slate-500 rounded-full">
@@ -48,7 +59,18 @@ const Reviews = () => {
                 </div>
                 <div className="">
                   <h2 className="card-title">{review.name}</h2>
-                  <p>{review.profetion}</p>
+                  <p>
+                    <strong>Profetion: </strong>
+                    <span>{review.profetion}</span>
+                  </p>
+                  <p>
+                    <i class="fa-solid fa-phone"></i>
+                    <strong>Phone: </strong> 01779312970
+                  </p>
+                  <p>
+                    <strong>U.Id: </strong>
+                    {review._id}
+                  </p>
                 </div>
               </div>
             </div>

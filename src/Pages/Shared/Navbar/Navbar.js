@@ -4,11 +4,49 @@ import "./Navbar.css";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { signOut } from "firebase/auth";
+import { useQuery } from "react-query";
+import Loading from "../Loading/Loading";
 
 const Navbar = () => {
   const [user] = useAuthState(auth);
+  const email = user?.email;
 
-  console.log(user);
+  const {
+    data: orders,
+    isloading,
+    refetch,
+  } = useQuery("tools", () =>
+    fetch(`https://serene-shelf-91638.herokuapp.com/orders/${email}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
+  );
+
+  if (isloading) {
+    return <Loading></Loading>;
+  }
+
+  // taking all selected product price and quantity
+
+  if (orders) {
+    console.log(orders);
+    const allPrices = orders?.map((order) => parseInt(order?.productPrice));
+    const allQuantity = orders?.map((order) =>
+      parseInt(order?.porductQuantity)
+    );
+
+    // calculating the price of selected product
+    
+    for (let i = 0; i < allPrices?.length; i++) {
+      let sum = 0;
+      return sum += allPrices[i] * allQuantity[i];
+    }
+  }
+  
+
   const handleSignOut = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
@@ -120,8 +158,8 @@ const Navbar = () => {
                       d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
-                  <span className="badge badge-sm indicator-item">0
-                    {/* {orders?.length ? orders?.length : 0} */}
+                  <span className="badge badge-sm indicator-item">
+                    0{/* {orders?.length ? orders?.length : 0} */}
                   </span>
                 </div>
               </label>
@@ -130,8 +168,9 @@ const Navbar = () => {
                 className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow"
               >
                 <div className="card-body">
-                  <span className="font-bold text-lg">0
-                    {/* {orders?.length ? orders?.length : 0} */} Items Selected
+                  <span className="font-bold text-lg">
+                    0{/* {orders?.length ? orders?.length : 0} */} Items
+                    Selected
                   </span>
                   <span className="text-info">Subtotal: 0৳{/* {sum} */}</span>
                   <div className="card-actions">

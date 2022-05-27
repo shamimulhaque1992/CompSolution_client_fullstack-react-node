@@ -112,7 +112,7 @@ const MyOrders = () => {
             <tbody>
               {/* <!-- row 1 --> */}
 
-              {orders.map((order, index) => (
+              {orders?.map((order, index) => (
                 <tr key={order?._id}>
                   <th>
                     <label>
@@ -167,7 +167,7 @@ const MyOrders = () => {
                       </Link>
                     ) : (
                       <button
-                        class="btn btn-success btn-sm tooltip btn-disabled"
+                        class="btn btn-sm tooltip btn-disabled"
                         data-tip="Pay"
                       >
                         <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
