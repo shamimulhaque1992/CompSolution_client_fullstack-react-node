@@ -23,9 +23,9 @@ const MyOrders = () => {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
-    }).then((res) => {
+    }).then((res) => {/* 
       console.log("res", res);
-      console.log(orders);
+      console.log(orders); */
       if (res.status === 401 || res.status === 403) {
         signOut(auth);
         localStorage.removeItem("accessToken");
@@ -89,14 +89,14 @@ const MyOrders = () => {
       </h1>
 
       {orders?.length > 0 ? (
-        <div class="overflow-x-auto w-full">
-          <table class="table w-full">
+        <div className="overflow-x-auto w-full">
+          <table className="table w-full">
             {/* <!-- head --> */}
             <thead>
               <tr className="text-center">
                 <th>
                   <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input type="checkbox" className="checkbox" />
                   </label>
                 </th>
                 <th>id</th>
@@ -116,14 +116,14 @@ const MyOrders = () => {
                 <tr key={order?._id}>
                   <th>
                     <label>
-                      <input type="checkbox" class="checkbox" />
+                      <input type="checkbox" className="checkbox" />
                     </label>
                   </th>
                   <td>{index + 1}</td>
                   <td>
-                    <div class="flex items-center space-x-3">
-                      <div class="avatar">
-                        <div class="mask mask-squircle w-12 h-12">
+                    <div className="flex items-center space-x-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-12 h-12">
                           <img
                             src={user.photoURL}
                             alt="Avatar Tailwind CSS Component"
@@ -131,9 +131,9 @@ const MyOrders = () => {
                         </div>
                       </div>
                       <div>
-                        <div class="font-bold">{user.displayName}</div>
-                        <div class="text-sm opacity-50">{user.email}</div>
-                        <div class="text-sm opacity-50">
+                        <div className="font-bold">{user.displayName}</div>
+                        <div className="text-sm opacity-50">{user.email}</div>
+                        <div className="text-sm opacity-50">
                           {order?.customerPhone}
                         </div>
                       </div>
@@ -142,7 +142,7 @@ const MyOrders = () => {
                   <td>
                     {order?.productName}
                     <br />
-                    <span class="badge badge-ghost badge-sm">
+                    <span className="badge badge-ghost badge-sm">
                       {order?.productDescription?.slice(0, 50)}
                     </span>
                   </td>
@@ -151,7 +151,7 @@ const MyOrders = () => {
                   <td>{order?.paymentMethod}</td>
                   <td className="text-center">
                     {order?.paymentStatus} <br />
-                    <span class="badge badge-ghost badge-sm">
+                    <span className="badge badge-ghost badge-sm">
                       {order?.transactionId ? order?.transactionId : "N/A"}
                     </span>
                   </td>
@@ -159,18 +159,18 @@ const MyOrders = () => {
                     {order?.paymentStatus === "Unpaid" ? (
                       <Link to={`/dashboard/payment/${order._id}`}>
                         <button
-                          class="btn btn-success btn-sm tooltip"
+                          className="btn btn-success btn-sm tooltip"
                           data-tip="Pay"
                         >
-                          <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
+                          <i className="fa-brands fa-amazon-pay text-white text-2xl"></i>
                         </button>
                       </Link>
                     ) : (
                       <button
-                        class="btn btn-sm tooltip btn-disabled"
+                        className="btn btn-sm tooltip btn-disabled"
                         data-tip="Pay"
                       >
-                        <i class="fa-brands fa-amazon-pay text-white text-2xl"></i>
+                        <i className="fa-brands fa-amazon-pay text-white text-2xl"></i>
                       </button>
                     )}
 
@@ -183,7 +183,7 @@ const MyOrders = () => {
                       onClick={() => handleDelete(order._id)}
                       data-tip="Delete"
                     >
-                      <i class="fa-solid text-red fa-trash-can text-white text-2xl"></i>
+                      <i className="fa-solid text-red fa-trash-can text-white text-2xl"></i>
                     </button>
                   </th>
                 </tr>

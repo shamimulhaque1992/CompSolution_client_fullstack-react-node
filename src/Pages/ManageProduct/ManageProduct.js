@@ -37,7 +37,6 @@ const ManageProduct = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           toast.success("The order is deleted successfully!");
           refetch();
         });
@@ -45,14 +44,14 @@ const ManageProduct = () => {
   };
   return (
     <div>
-      <h1>manage users{tools?.length}</h1>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <h1 className="text-2xl">Total Products: {tools?.length}</h1>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
                 <label>
-                  <input type="checkbox" class="checkbox" />
+                  <input type="checkbox" className="checkbox" />
                 </label>
               </th>
               <th>S.NO</th>
@@ -70,16 +69,16 @@ const ManageProduct = () => {
               <tr key={index}>
                 <th>
                   <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input type="checkbox" className="checkbox" />
                   </label>
                 </th>
                 <td>{index + 1}</td>
                 <td>{tool?._id}</td>
 
                 <td>
-                  <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={tool?.img}
                           alt="Avatar Tailwind CSS Component"
@@ -87,8 +86,8 @@ const ManageProduct = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{tool?.title}</div>
-                      <div class="text-sm opacity-50">
+                      <div className="font-bold">{tool?.title}</div>
+                      <div className="text-sm opacity-50">
                         {tool?.description
                           ? tool?.description.slice(0, 40)
                           : ""}
@@ -104,15 +103,15 @@ const ManageProduct = () => {
                 <th>
                   <button
                     onClick={() => handleDeleteProduct(tool._id)}
-                    class="btn hover:text-white btn-error btn-outline btn-sm w-44 flex justify-between items-center"
+                    className="btn hover:text-white btn-error btn-outline btn-sm w-44 flex justify-between items-center"
                   >
-                    <i class="fa-solid text-red fa-trash-can"></i>
+                    <i className="fa-solid text-red fa-trash-can"></i>
                     <span>Remove Product</span>
                   </button>
                 </th>
                 <th>
-                  <button class="btn btn-success btn-outline btn-sm w-44 flex justify-between items-center">
-                    <i class="fa-solid text-red fa-trash-can"></i>
+                  <button className="btn btn-success btn-outline btn-sm w-44 flex justify-between items-center">
+                    <i className="fa-solid text-red fa-trash-can"></i>
                     <span>Update tools</span>
                   </button>
                 </th>

@@ -62,13 +62,13 @@ const ManageUsers = () => {
   return (
     <div>
       <h1 className="text-2xl pt-8 pb-8">Available Users: {users?.length}</h1>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full">
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
                 <label>
-                  <input type="checkbox" class="checkbox" />
+                  <input type="checkbox" className="checkbox" />
                 </label>
               </th>
               <th>S.NO</th>
@@ -83,15 +83,15 @@ const ManageUsers = () => {
               <tr key={index}>
                 <th>
                   <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input type="checkbox" className="checkbox" />
                   </label>
                 </th>
                 <td>{index + 1}</td>
                 <td>{user._id}</td>
                 <td>
-                  <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={user?.photo}
                           alt="Avatar Tailwind CSS Component"
@@ -99,17 +99,17 @@ const ManageUsers = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{user.name}</div>
-                      <div class="text-sm opacity-50">{user.email}</div>
+                      <div className="font-bold">{user.name}</div>
+                      <div className="text-sm opacity-50">{user.email}</div>
                     </div>
                   </div>
                 </td>
 
                 <th>
-                  {user.role !== "admin" && <button onClick={()=>makeAdmin(user)} class="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
+                  {user.role !== "admin" && <button onClick={()=>makeAdmin(user)} className="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i className="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
                 </th>
                 <th>
-                  <button onClick = {()=>removeUsers(user)} class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i class="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
+                  <button onClick = {()=>removeUsers(user)} className="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i className="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
                 </th>
               </tr>
             ))}

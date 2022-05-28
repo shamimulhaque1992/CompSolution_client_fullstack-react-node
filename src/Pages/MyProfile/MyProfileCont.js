@@ -18,7 +18,6 @@ const MyProfileCont = ({ userss, refetch }) => {
       phone: data.phonenumber,
       mstatus: data.mstatus,
     };
-    console.log(orders);
 
     fetch(`https://serene-shelf-91638.herokuapp.com/user/${email}`, {
       method: "PUT",
@@ -40,38 +39,38 @@ const MyProfileCont = ({ userss, refetch }) => {
     <div>
       {/* <div className="mt-5">
         {role ? (
-          <i class="fa-solid fa-user-gear text-5xl mb-5"></i>
+          <i className="fa-solid fa-user-gear text-5xl mb-5"></i>
         ) : (
-          <i class="fa-solid fa-user text-5xl mb-5"></i>
+          <i className="fa-solid fa-user text-5xl mb-5"></i>
         )}
       </div> */}
 
       <h1 className="text-2xl text-black bg-base-100 shadow-2xl w-6/12 mx-auto rounded-md p-4 mb-14">
         Hello, {name}! <br /> Welcome to your profile
       </h1>
-      <div class="hero min-h-screen bg-">
-        <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="text-left border-2 rounded-md bg-base-100 shadow-2xl p-10">
+      <div className="hero min-h-screen bg-">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-left border-2 rounded-md bg-base-100 shadow-2xl p-10">
             <img
               className="mx-auto mt-5 rounded-2xl w-5/12"
               src={photo}
               alt=""
             />
             <p className="text-center">Role: {role ? "Admin" : "User"}</p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>User ID. {_id}</strong>
             </p>
 
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Name: {name}</strong>
             </p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Email: {email} </strong>
             </p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Address: {address} </strong>
             </p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Phone No: {phone} </strong>
             </p>
           </div>

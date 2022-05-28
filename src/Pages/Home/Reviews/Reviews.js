@@ -16,13 +16,13 @@ const Reviews = () => {
       },
     }).then((res) => res.json())
   );
-  console.log(reviews);
+  // console.log(reviews);
 
   if (isloading) {
     return <Loading></Loading>;
   }
 
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <div className="reviewContainer container mx-auto mt-20">
       <div className="sectionHeader mb-10">
@@ -40,12 +40,12 @@ const Reviews = () => {
                 <strong className="text-indigo-300">Comments: </strong>
                 <p className="text-left">{review.comments}</p>
               </div>
-              <p class="text-left">
+              <p className="text-left">
                 <strong>
                   Ratings: <span> {review.ratings}</span>
                 </strong>
               </p>
-              <p class="text-left">
+              <p className="text-left">
                 <strong>
                   Recomendation:
                   <span> {review.recomendation}</span>
@@ -64,7 +64,7 @@ const Reviews = () => {
                     <span>{review.profetion}</span>
                   </p>
                   <p>
-                    <i class="fa-solid fa-phone"></i>
+                    <i className="fa-solid fa-phone"></i>
                     <strong>Phone: </strong> 01779312970
                   </p>
                   <p>

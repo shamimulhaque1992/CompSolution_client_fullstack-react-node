@@ -8,7 +8,6 @@ import MyProfileCont from "./MyProfileCont";
 const MyProfile = () => {
   const [user] = useAuthState(auth);
   const email = user?.email;
-  console.log(email);
 
   const {
     data: users,

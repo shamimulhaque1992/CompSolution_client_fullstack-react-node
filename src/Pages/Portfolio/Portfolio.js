@@ -28,7 +28,7 @@ const Portfolio = () => {
 
             <a
               href="http://www.google.com"
-              for="my-modal-3"
+              htmlFor="my-modal-3"
               className="btn modal-button"
             >
               More About Me
@@ -65,7 +65,7 @@ const Portfolio = () => {
                   className="pl-3"
                   stroke="currentColor"
                   fill="currentColor"
-                  stroke-width="0"
+                  strokeWidth="0"
                   viewBox="0 0 512 512"
                   width="2em"
                   xmlns="http://www.w3.org/2000/svg"

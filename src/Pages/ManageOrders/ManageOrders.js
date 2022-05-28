@@ -80,14 +80,14 @@ const ManageOrders = () => {
 
   return (
     <div>
-      <h1>manage users{orders?.length}</h1>
-      <div class="overflow-x-auto w-full">
-        <table class="table w-full text-center">
+      <h1 className="text-2xl">Total Orders: {orders?.length}</h1>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full text-center">
           <thead>
             <tr className="">
               <th>
                 <label>
-                  <input type="checkbox" class="checkbox" />
+                  <input type="checkbox" className="checkbox" />
                 </label>
               </th>
               <th>S.NO</th>
@@ -115,7 +115,7 @@ const ManageOrders = () => {
               <tr key={index}>
                 <th>
                   <label>
-                    <input type="checkbox" class="checkbox" />
+                    <input type="checkbox" className="checkbox" />
                   </label>
                 </th>
                 <td>{index + 1}</td>
@@ -126,9 +126,9 @@ const ManageOrders = () => {
                   {order?.productID}
                 </td>
                 <td>
-                  <div class="flex items-center space-x-3">
-                    <div class="avatar">
-                      <div class="mask mask-squircle w-12 h-12">
+                  <div className="flex items-center space-x-3">
+                    <div className="avatar">
+                      <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={order?.productimg}
                           alt="Avatar Tailwind CSS Component"
@@ -136,24 +136,24 @@ const ManageOrders = () => {
                       </div>
                     </div>
                     <div>
-                      <div class="font-bold">{order?.customerName}</div>
-                      <div class="text-sm opacity-50">
+                      <div className="font-bold">{order?.customerName}</div>
+                      <div className="text-sm opacity-50">
                         {order?.customerEmail}
                       </div>
-                      <div class="text-sm opacity-50">
+                      <div className="text-sm opacity-50">
                         {order?.customerAddress}
                       </div>
-                      <div class="text-sm opacity-50">
+                      <div className="text-sm opacity-50">
                         {order?.customerPhone}
                       </div>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <div class="flex items-center space-x-3">
+                  <div className="flex items-center space-x-3">
                     <div>
-                      <div class="font-bold">{order?.productName}</div>
-                      <div class="text-sm opacity-50">
+                      <div className="font-bold">{order?.productName}</div>
+                      <div className="text-sm opacity-50">
                         {order?.productDescription?.slice(0, 40)}
                       </div>
                     </div>
@@ -177,9 +177,9 @@ const ManageOrders = () => {
                   {order.role !== "admin" && (
                     <button
                       onClick={() => handleDelevered(order._id)}
-                      class="btn btn-success btn-outline btn-sm w-48 flex justify-between items-center"
+                      className="btn btn-success btn-outline btn-sm w-48 flex justify-between items-center"
                     >
-                      <i class="fa-solid fa-lock-open text-green"></i>
+                      <i className="fa-solid fa-lock-open text-green"></i>
                       <span>Conferm Delevery</span>
                     </button>
                   )}
@@ -187,9 +187,9 @@ const ManageOrders = () => {
                 <th>
                   <button
                     onClick={() => handleCancleOrder(order._id)}
-                    class="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"
+                    className="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"
                   >
-                    <i class="fa-solid text-red fa-trash-can"></i>
+                    <i className="fa-solid text-red fa-trash-can"></i>
                     <span>Cancle Order</span>
                   </button>
                 </th>

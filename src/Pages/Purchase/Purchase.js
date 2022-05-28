@@ -78,25 +78,25 @@ const Purchase = () => {
     <div>
       <h1>This is purchase</h1>
 
-      <div class="hero min-h-screen">
-        <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="text-center lg:text-left border-2 rounded-md p-3">
+      <div className="hero min-h-screen">
+        <div className="hero-content flex-col lg:flex-row-reverse">
+          <div className="text-center lg:text-left border-2 rounded-md p-3">
             <img
               className="mx-auto mt-5 rounded-2xl w-5/12"
               src={tools.img}
               alt=""
             />
-            <h1 class="text-5xl font-bold">{tools.title}</h1>
-            <p class="py-6 w-11/12">{tools.description}</p>
-            <p class="py-6 w-11/12">
+            <h1 className="text-5xl font-bold">{tools.title}</h1>
+            <p className="py-6 w-11/12">{tools.description}</p>
+            <p className="py-6 w-11/12">
               <strong>Price: ৳</strong>
               {tools.price} BDT
             </p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Available Quantity: </strong>
               {tools.quantity}
             </p>
-            <p class="py-6 w-11/12">
+            <p className="py-6 w-11/12">
               <strong>Minimum Order Quantity: </strong>
               {tools.minimumquantity}
             </p>

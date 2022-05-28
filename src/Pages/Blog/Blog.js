@@ -8,8 +8,8 @@ const Blog = () => {
             <h1 className="text-center text-3xl mb-5">Q&A</h1>
             <div className="flex justify-center items-center">
                 <div className="w-3/4  mb-5">
-                    <div class="mockup-window border border-base-300">
-                        <div class="flex flex-col items-center px-10 py-7 bg-base-200">
+                    <div className="mockup-window border border-base-300">
+                        <div className="flex flex-col items-center px-10 py-7 bg-base-200">
                             <p className="text-lg font-bold">
                                 How will you improve the performance of a React
                                 Application?
@@ -30,12 +30,13 @@ const Blog = () => {
 
             <div className="flex justify-center items-center">
                 <div className="w-3/4  mb-5">
-                    <div class="mockup-window border border-base-300">
-                        <div class="flex flex-col items-center px-10 py-7 bg-base-200">
+                    <div className="mockup-window border border-base-300">
+                        <div className="flex flex-col items-center px-10 py-7 bg-base-200">
                             <p className="text-lg font-bold">
                                 What are the different ways to manage a state in a React application?
                             </p>
-                            <p>React uses observable object. There are four different ways to manage a state in a React application. Those are "Local State", "Global State", "Server State" and "URL State".</p>
+                            <p>React uses observable object. There are four different ways to manage a state in a React application. Those are "Local State", "Global State", "Server State" and "URL State".</p><br />
+                            <h1 className="">Every React component has a built-in state. This state is an object which stores the property values that belong to a component. State is able to keep data from different components in-sync because each state update re-renders all relevant components.</h1>
                         </div>
                     </div>
                 </div>
@@ -43,8 +44,8 @@ const Blog = () => {
 
             <div className="flex justify-center items-center">
                 <div className="w-3/4  mb-5">
-                    <div class="mockup-window border border-base-300">
-                        <div class="flex flex-col items-center px-10 py-7 bg-base-200">
+                    <div className="mockup-window border border-base-300">
+                        <div className="flex flex-col items-center px-10 py-7 bg-base-200">
                             <p className="text-lg font-bold">
                                 How does prototypical inheritance work?
                             </p>
@@ -57,8 +58,8 @@ const Blog = () => {
 
             <div className="flex justify-center items-center">
                 <div className="w-3/4  mb-5">
-                    <div class="mockup-window border border-base-300">
-                        <div class="flex flex-col items-center px-10 py-7 bg-base-200">
+                    <div className="mockup-window border border-base-300">
+                        <div className="flex flex-col items-center px-10 py-7 bg-base-200">
                             <p className="text-lg font-bold">
                                 Why you do not set the state directly in React. For example, if you have const [products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts?
 
@@ -72,8 +73,8 @@ const Blog = () => {
 
             <div className="flex justify-center items-center">
                 <div className="w-3/4  mb-5">
-                    <div class="mockup-window border border-base-300">
-                        <div class="flex flex-col items-center px-10 py-7 bg-base-200">
+                    <div className="mockup-window border border-base-300">
+                        <div className="flex flex-col items-center px-10 py-7 bg-base-200">
                             <p className="text-lg font-bold">
                                 What is a unit test? Why should write unit tests?
 
