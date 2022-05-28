@@ -57,6 +57,11 @@ const Navbar = () => {
           <i className="fa-solid fa-house"></i>Home
         </Link>
       </li>
+      <li>
+        <Link to="/allproducts">
+          Products
+        </Link>
+      </li>
       <li className="">
         <Link to="/about">About</Link>
       </li>

@@ -18,7 +18,7 @@ const SingleTool = ({ tool }) => {
   };
   return (
     <div className="">
-      <div className="card mx-auto sm:w-9/12 md:w-6/12 lg:w-11/12 bg-base-100 shadow-xl">
+      <div className="card mx-auto  bg-base-100 shadow-xl">
         <figure>
           <img
             className="h-48 w-9/12 rounded-md"

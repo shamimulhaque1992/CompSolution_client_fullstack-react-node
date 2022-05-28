@@ -2,7 +2,7 @@ import React from "react";
 import Banner from "./Banner/Banner";
 import BasicInfo from "./BasicInfo/BasicInfo";
 import BuisnessSummary from "./BuisnessSummary/BuisnessSummary";
-import ContactUs from "./ContactUs/ContactUs";
+import ContactUsHome from "./ContactUsHome/ContactUsHome";
 import FeatureService from "./FeatureService/FeatureService";
 import Reviews from "./Reviews/Reviews";
 import TakeService from "./TakeService/TakeService";
@@ -19,7 +19,7 @@ const Home = () => {
       <FeatureService></FeatureService>
       <TakeService></TakeService>
       <Reviews></Reviews>
-      <ContactUs></ContactUs>
+      <ContactUsHome></ContactUsHome>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import About from "./Pages/About/About";
-import ContactUs from "./Pages/ContactUs/ContactUs";
+
 import ForgotPassword from "./Pages/ForgotPassword/ForgotPassword";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
@@ -29,6 +29,8 @@ import Blog from "./Pages/Blog/Blog";
 import AllReviews from "./Pages/AllReviews/AllReviews";
 import Notfound from "./Pages/Notfound/Notfound";
 import Portfolio from "./Pages/Portfolio/Portfolio";
+import AllProducts from "./Pages/AllProducts/AllProducts";
+import ContactUs from "./Pages/ContactUs/ContactUs";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -108,6 +110,7 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/register" element={<Register></Register>}></Route>
         <Route path="/allreviews" element={<AllReviews></AllReviews>}></Route>
+        <Route path="/allproducts" element={<AllProducts></AllProducts>}></Route>
         <Route path="*" element={<Notfound></Notfound>}></Route>
       </Routes>
       <ToastContainer />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import useTools from "../../../hooks/useTools";
 import SingleTool from "./SingleTool";
 
@@ -11,11 +12,14 @@ const Tools = () => {
           Some of Our Hot Products
         </h2>
       </div>
-      <div className="flex flex-col items-center justify-center lg:flex-row gap-10 mb-20">
-        {tools.slice(0, 3).map((tool) => (
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-10 mb-20">
+        {tools.slice(0, 6).map((tool) => (
           <SingleTool key={tool._id} tool={tool}></SingleTool>
         ))}
       </div>
+      <Link to="/allproducts">
+        <button className="btn btn-primary mb-10">View all Products</button>
+      </Link>
     </div>
   );
 };

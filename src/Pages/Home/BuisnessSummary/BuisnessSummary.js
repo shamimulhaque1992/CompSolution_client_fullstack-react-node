@@ -3,6 +3,8 @@ import React from "react";
 const BuisnessSummary = () => {
   return (
     <div>
+      <hr className="mb-7 w-9/12 mx-auto"/>
+      <h1 className="text-red-300 text-3xl mb-6">Our buisness Overview</h1>
       <div className="stats shadow w-9/12 bg-zinc-200">
         <div className="stat">
           <div className="stat-figure text-secondary">
@@ -67,6 +69,25 @@ const BuisnessSummary = () => {
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
       </div>
+      <div class="mt-10 stats bg-primary text-primary-content">
+        <div class="stat">
+          <div class="stat-title">Account balance</div>
+          <div class="stat-value">$89,400k</div>
+          <div class="stat-actions">
+            <button class="btn btn-sm btn-success">See stats</button>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div class="stat-title">Monthly Revenue</div>
+          <div class="stat-value">$89,400</div>
+          <div class="stat-actions">
+            <button class="btn btn-sm">all revinue state</button>
+            <button class="btn btn-sm">Revinue last month</button>
+          </div>
+        </div>
+      </div>
+      <hr className="mt-7 w-9/12 mx-auto"/>
     </div>
   );
 };
