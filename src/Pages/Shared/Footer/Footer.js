@@ -71,6 +71,7 @@ const Footer = () => {
             Comp Solution Ltd. <br />
             Providing reliable tech since 1992
           </p>
+          <p className="copyright">&copy; Khandoker Shamimul Haque 2022. All rights reserved.</p>
         </div>
         <div className="md:place-self-center md:justify-self-end">
           <div className="grid grid-flow-col gap-4">

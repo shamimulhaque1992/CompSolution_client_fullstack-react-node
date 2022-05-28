@@ -3,7 +3,7 @@ import React from "react";
 const BuisnessSummary = () => {
   return (
     <div>
-      <div className="stats shadow w-full bg-zinc-200">
+      <div className="stats shadow w-9/12 bg-zinc-200">
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg
@@ -20,8 +20,8 @@ const BuisnessSummary = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Downloads</div>
-          <div className="stat-value">31K</div>
+          <div className="stat-title">Monthly sell</div>
+          <div className="stat-value">3001K</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
@@ -41,7 +41,7 @@ const BuisnessSummary = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Users</div>
+          <div className="stat-title">New Customer</div>
           <div className="stat-value">4,200</div>
           <div className="stat-desc">↗︎ 400 (22%)</div>
         </div>
@@ -62,7 +62,7 @@ const BuisnessSummary = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Registers</div>
+          <div className="stat-title">Return Customer</div>
           <div className="stat-value">1,200</div>
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>

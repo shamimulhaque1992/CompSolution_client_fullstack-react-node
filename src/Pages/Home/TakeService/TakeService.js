@@ -1,7 +1,7 @@
 import React from "react";
 import "./TakeSerivce.css";
 import engineer from "../../../assets/images/engineer.png"
-
+import motherboard from "../../../assets/images/motherboard.jpg"
 
 const TakeService = () => {
   return (
@@ -9,8 +9,8 @@ const TakeService = () => {
       <div className="hero takeServiceHero bg-base-200">
         <div className="relative hero-content flex-col lg:flex-row">
           <img
-            src={engineer}
-            className="mt-[-100px] w-11/12 max-w-sm " alt=""
+            src={motherboard}
+            className="" alt=""
           />
           <div className="mb-16">
             <h1 className="text-5xl font-bold">Take serveices</h1>

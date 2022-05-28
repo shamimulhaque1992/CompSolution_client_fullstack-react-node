@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import fabric from "../../assets/images/fabric.png";
-import fps from "../../assets/images/fps.png";
+import compfreak from "../../assets/images/compfreak.png";
+import freshfeel from "../../assets/images/freshfeel.png";
+import quizapp from "../../assets/images/quizapp.png";
 import profileimage from "../../assets/images/profile.jpeg";
-import t3 from "../../assets/images/t3.png";
+import clicklife from "../../assets/images/clicklife.png";
 
 const Portfolio = () => {
   return (
@@ -73,8 +74,8 @@ const Portfolio = () => {
                 </svg>
               </button>
             </div>
-            <div className="divider w-10/12 mx-auto"></div>
-            <div className="text-5xl mb-8">My Educational Background</div>
+
+            <div className="text-5xl mt-20 mb-8">My Educational Background</div>
             <div className="grid mx-auto grid-cols-2 gap-4">
               <div className="card  glass w-96 shadow-xl">
                 <div className="card-body text-left">
@@ -151,9 +152,9 @@ const Portfolio = () => {
               </div>
             </div>
           </div>
-          <div></div>
         </div>
       </div>
+
       <div className="divider mt-20 w-10/12 mx-auto"></div>
       <div className="mt-4 mb-20">
         <h1 className="mt-10 text-center text-5xl font-bold mb-5">My Skills</h1>
@@ -233,20 +234,28 @@ const Portfolio = () => {
       </div>
       <div className="divider mb-10 w-10/12 mx-auto"></div>
 
-      <div>
+      <div className="container mx-auto">
         <h1 className="text-center text-5xl font-bold mb-5">
           Some of My Projects
         </h1>
-        <div className="grid grid-cols-2 gap-1 mx-auto pb-20">
+        <div className="grid grid-cols-2 gap-4 mx-auto pb-20">
+
+
+
           <div className="mx-auto">
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl mb-10">
               <figure>
-                <img src={t3} alt="project" />
+                <img className="h-96 w-full" src={freshfeel} alt="project" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Fresh-feel.com</h2>
-                <p>A  fregrence werehouse website where people can order huge amount of fregrence.</p>
-                <div className="card-actions justify-start"> github link(client):
+                <p>
+                  A fregrence werehouse website where people can order huge
+                  amount of fregrence.
+                </p>
+                <div className="card-actions justify-start">
+                  {" "}
+                  github link(client):
                   <a
                     href="https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-shamimulhaque1992"
                     target="_blank"
@@ -256,7 +265,9 @@ const Portfolio = () => {
                     Visite the git repo.
                   </a>
                 </div>
-                <div className="card-actions justify-start"> github link(server):
+                <div className="card-actions justify-start">
+                  {" "}
+                  github link(server):
                   <a
                     href="https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-shamimulhaque1992"
                     target="_blank"
@@ -283,7 +294,7 @@ const Portfolio = () => {
           <div className="mx-auto">
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
               <figure>
-                <img src={fabric} alt="project" />
+                <img className="h-96 w-full" src={quizapp} alt="project" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Quiz App</h2>
@@ -293,7 +304,9 @@ const Portfolio = () => {
                   that particular topic.
                 </p>
 
-                <div className="card-actions justify-start"> github link:
+                <div className="card-actions justify-start">
+                  {" "}
+                  github link:
                   <a
                     href="https://github.com/shamimulhaque1992/Quiz--App"
                     target="_blank"
@@ -320,12 +333,17 @@ const Portfolio = () => {
           <div className="mx-auto">
             <div className="card card-compact w-96 bg-base-100 shadow-xl">
               <figure>
-                <img src={fps} alt="project" />
+                <img className="h-96 w-full" src={clicklife} alt="project" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">Click-Life</h2>
-                <p>A website of a personal photographer who can takes order from client adn gives service.</p>
-                <div className="card-actions justify-start"> github link:
+                <p>
+                  A website of a personal photographer who can takes order from
+                  client adn gives service.
+                </p>
+                <div className="card-actions justify-start">
+                  {" "}
+                  github link:
                   <a
                     href="https://github.com/programming-hero-web-course-4/independent-service-provider-shamimulhaque1992"
                     target="_blank"
@@ -339,6 +357,42 @@ const Portfolio = () => {
                 <div className="card-actions justify-end">
                   <a
                     href="https://personal-photographer-d3808.web.app/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn button-primary"
+                  >
+                    Visite The Site
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mx-auto">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+              <figure>
+                <img className="h-96 w-full" src={compfreak} alt="project" />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title">CompFreak</h2>
+                <p>
+                  A website of a simple Tec Ecomerce website where user can see the available products and reviwes of the previous customers.
+                </p>
+                <div className="card-actions justify-start">
+                  {" "}
+                  github link:
+                  <a
+                    href="https://github.com/programming-hero-web-course-4/product-analysis-website-shamimulhaque1992"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline text-blue-800"
+                  >
+                    Visite the git repo.
+                  </a>
+                </div>
+
+                <div className="card-actions justify-end">
+                  <a
+                    href="https://bespoke-marshmallow-065bd8.netlify.app/home"
                     target="_blank"
                     rel="noreferrer"
                     className="btn button-primary"

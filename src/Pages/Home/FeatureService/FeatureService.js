@@ -1,5 +1,6 @@
 import React from "react";
 import "./FeatureService.css"
+import amd from "../../../assets/images/amd.jpg"
 
 const FeatureService = () => {
   return (
@@ -7,16 +8,15 @@ const FeatureService = () => {
       <div className="hero fetureHero">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            src="https://images.unsplash.com/photo-1531765408077-9a1f85f90df1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTV8fGludGVybmV0JTIwY29ubmVjdGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=400&q=60"
+            src={amd}
             className="w-11/12 max-w-sm rounded-lg shadow-2xl"
             alt=""
           />
           <div>
-            <h1 className="text-5xl font-bold">Feature Service</h1>
+            <h1 className="text-5xl font-bold">HOT selling Product</h1>
+            <h2 className="text-2xl">AMD Ryzen 3 PRO 4350G Processor</h2>
             <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              The AMD Ryzen 3 PRO 4350G is a quad-core CPU based on Zen architecture. Whether for work, play, or enjoyment, this AMD Ryzen desktop CPU provides powerful multitasking and multimedia performance at an affordable price. The AMD Ryzen CPU with Radeon Vega integrated graphics is the ideal combo for everyday computing. AMD Ryzen 3 Pro 4350G desktop CPU for socket AM4 with 4 cores and 8 threads. The CPU's basic clock frequency is 3800 MHz, but thanks to Turbo Core technology, it can run at speeds of up to 4000 MHz. The L3 cache has a capacity of 4 MB. Please keep in mind that this chip includes Radeon Vega 6 integrated graphics. The AMD Ryzen 3 PRO 4350G Processor comes with a 03-years warranty.
             </p>
             <button className="btn btn-primary">Get Started</button>
           </div>

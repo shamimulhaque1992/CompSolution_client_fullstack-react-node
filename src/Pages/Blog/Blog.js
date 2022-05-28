@@ -15,6 +15,14 @@ const Blog = () => {
                                 Application?
                             </p>
                             <p>Normally, react uses some technologies in the background to make things perform better. However, we can improve more by using some techniques of our own. Link making different components, lazy loading images, carefully render components etc...</p>
+                            <h1>besides there are some well recogni techniques to improve the performance, those are discussed below</h1>
+                            <ul className="text-left">
+                                <li>1. Keeping component state local where necessary</li>
+                                <li>2. Memoizing React components to prevent unnecessary re-renders</li>
+                                <li>3. Code-splitting in React using dynamic import()</li>
+                                <li>4. Windowing or list virtualization in React applications</li>
+                                <li>5. Lazy loading images in React</li>
+                            </ul>
                         </div>
                     </div>
                 </div>

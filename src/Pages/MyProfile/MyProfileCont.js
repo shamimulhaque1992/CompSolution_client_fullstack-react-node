@@ -38,13 +38,13 @@ const MyProfileCont = ({ userss, refetch }) => {
   };
   return (
     <div>
-      <div className="mt-5">
+      {/* <div className="mt-5">
         {role ? (
           <i class="fa-solid fa-user-gear text-5xl mb-5"></i>
         ) : (
           <i class="fa-solid fa-user text-5xl mb-5"></i>
         )}
-      </div>
+      </div> */}
 
       <h1 className="text-2xl text-black bg-base-100 shadow-2xl w-6/12 mx-auto rounded-md p-4 mb-14">
         Hello, {name}! <br /> Welcome to your profile
