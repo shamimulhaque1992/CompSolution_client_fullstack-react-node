@@ -28,6 +28,7 @@ import Payment from "./Pages/Payment/Payment";
 import Blog from "./Pages/Blog/Blog";
 import AllReviews from "./Pages/AllReviews/AllReviews";
 import Notfound from "./Pages/Notfound/Notfound";
+import Portfolio from "./Pages/Portfolio/Portfolio";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -99,6 +100,7 @@ function App() {
           ></Route>
         </Route>
         <Route path="/contactus" element={<ContactUs></ContactUs>}></Route>
+        <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route
           path="/forgotpassword"
           element={<ForgotPassword></ForgotPassword>}

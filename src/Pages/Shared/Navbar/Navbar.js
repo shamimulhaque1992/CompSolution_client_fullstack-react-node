@@ -45,7 +45,6 @@ const Navbar = () => {
       return sum += allPrices[i] * allQuantity[i];
     }
   } */
-  
 
   const handleSignOut = () => {
     signOut(auth);
@@ -69,6 +68,9 @@ const Navbar = () => {
       </li>
       <li className="">
         <Link to="/blog">Blog</Link>
+      </li>
+      <li className="">
+        <Link to="/portfolio">Portfolio</Link>
       </li>
       {user && (
         <li className="">
