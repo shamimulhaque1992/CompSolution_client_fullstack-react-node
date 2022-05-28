@@ -154,7 +154,7 @@ const ManageOrders = () => {
                     <div>
                       <div class="font-bold">{order?.productName}</div>
                       <div class="text-sm opacity-50">
-                        {order?.productDescription.slice(0, 40)}
+                        {order?.productDescription?.slice(0, 40)}
                       </div>
                     </div>
                   </div>

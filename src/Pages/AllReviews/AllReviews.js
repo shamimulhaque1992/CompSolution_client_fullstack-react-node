@@ -32,9 +32,9 @@ const AllReviews = () => {
         </h1>
       </div>
 
-      <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-1 md:grid-cols-1 mb-20 lg:grid-cols-2 xl:grid-cols-3 gap-4">
         {reviews?.map((review,index) => (
-          <div key={index} className="cursor-pointer card w-11/12 lg:card-side bg-base-100 shadow-xl">
+          <div key={index} className="cursor-pointer card w-11/12 lg:card-side bg-base-100 mx-auto shadow-xl">
             <div className="card-body flex flex-col">
               <div className="">
                 <strong className="text-indigo-300">Comments: </strong>

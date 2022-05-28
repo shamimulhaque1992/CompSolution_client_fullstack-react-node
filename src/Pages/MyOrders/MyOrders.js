@@ -143,7 +143,7 @@ const MyOrders = () => {
                     {order?.productName}
                     <br />
                     <span class="badge badge-ghost badge-sm">
-                      {order?.productDescription.slice(0, 50)}
+                      {order?.productDescription?.slice(0, 50)}
                     </span>
                   </td>
                   <td>{order?.productPrice}</td>

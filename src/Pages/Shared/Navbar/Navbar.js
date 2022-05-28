@@ -11,7 +11,7 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const email = user?.email;
 
-  const {
+  /* const {
     data: orders,
     isloading,
     refetch,
@@ -44,7 +44,7 @@ const Navbar = () => {
       let sum = 0;
       return sum += allPrices[i] * allQuantity[i];
     }
-  }
+  } */
   
 
   const handleSignOut = () => {
@@ -172,7 +172,7 @@ const Navbar = () => {
                     0{/* {orders?.length ? orders?.length : 0} */} Items
                     Selected
                   </span>
-                  <span className="text-info">Subtotal: 0৳{/* {sum} */}</span>
+                  <span className="text-info">Subtotal : 0৳{/* {sum} */}</span>
                   <div className="card-actions">
                     <button className="btn btn-primary btn-block">
                       View cart
