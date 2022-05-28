@@ -1,6 +1,6 @@
-# FreshFeel.com
+# CS-CompSolution
 
-Live site link: [FreshFeel.com](https://fragrance-warehouse-client.web.app).
+Live site link: [CS-CompSolution](https://comp-solution-ab5ea.web.app).
 
 ## Devaloper Info.
 
@@ -24,6 +24,7 @@ You may also see any lint errors in the console.
 - User can pay for products.
 - Admin rut added.
 - JWT is implemented only for email login.
+- Strip Payment implemented.
 
 ## Learn More
 
