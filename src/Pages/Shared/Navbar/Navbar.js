@@ -96,7 +96,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="flex w-full sticky top-0 z-50 p-0 justify-between navbar bg-base-100 flexitcolumn">
+    <div className="flex w-full sticky top-0 z-50 p-0 justify-between navbar bg-transparent lg:bg-base-100/75 flexitcolumn">
       {/* nav menu dropdown */}
       <div className="flex jaustify">
         <div className="flex-none dropdown hidden showItems">
