@@ -69,7 +69,7 @@ const BuisnessSummary = () => {
           <div className="stat-desc">↘︎ 90 (14%)</div>
         </div>
       </div>
-      <div className="mt-10 stats bg-primary text-primary-content">
+      <div className="mt-10 stats w-9/12 bg-primary text-primary-content">
         <div className="stat">
           <div className="stat-title">Account balance</div>
           <div className="stat-value">$89,400k</div>
