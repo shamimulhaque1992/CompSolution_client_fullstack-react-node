@@ -87,7 +87,7 @@ const ManageUsers = () => {
                   </label>
                 </th>
                 <td>{index + 1}</td>
-                <td>{user._id}</td>
+                <td>{user?._id}</td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -99,14 +99,14 @@ const ManageUsers = () => {
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">{user.name}</div>
-                      <div className="text-sm opacity-50">{user.email}</div>
+                      <div className="font-bold">{user?.name}</div>
+                      <div className="text-sm opacity-50">{user?.email}</div>
                     </div>
                   </div>
                 </td>
 
                 <th>
-                  {user.role !== "admin" && <button onClick={()=>makeAdmin(user)} className="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i className="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
+                  {user?.role !== "admin" && <button onClick={()=>makeAdmin(user)} className="btn btn-success btn-outline btn-sm w-36 flex justify-between items-center"><i className="fa-solid fa-lock-open text-green"></i><span>Make Admin</span></button>}
                 </th>
                 <th>
                   <button onClick = {()=>removeUsers(user)} className="btn btn-error btn-outline btn-sm w-36 flex justify-between items-center"><i className="fa-solid text-red fa-trash-can"></i><span>Remove User</span></button>
