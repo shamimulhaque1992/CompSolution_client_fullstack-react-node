@@ -7,7 +7,7 @@ const ContactUs = () => {
     style={{
         backgroundImage: `url(${contact})`,
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "left top",
+        backgroundPosition: "right center",
         backgroundSize: "25vw 50vh",
       }}>
       <div className="">
