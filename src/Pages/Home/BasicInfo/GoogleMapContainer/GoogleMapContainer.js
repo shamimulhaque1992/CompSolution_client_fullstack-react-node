@@ -21,7 +21,7 @@ const GoogleMapContainer = () => {
           />
           <Marker position={[23.782221427930885, 90.35954877276002]}>
             <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
+              CS-Compsolution, Kallyanpur, Dhaka, Bangladesh
             </Popup>
           </Marker>
         </MapContainer>
