@@ -1,11 +1,17 @@
 import React from "react";
-import "./ContactUsHome.css";
+import contact from '../../../assets/images/contact.gif'
 
 const ContactUs = () => {
   return (
-    <div>
-      <div className="contactCss hero min-h-screen bg-base-200 ">
-        <div className="container mx-auto  hero-content flex-col mb-20 mt-10">
+    <div className="w-11/12 shadow-xl mx-auto mb-10 p-10"
+    style={{
+        backgroundImage: `url(${contact})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "left top",
+        backgroundSize: "25vw 50vh",
+      }}>
+      <div className="">
+        <div className="container mx-auto  hero-content flex-col">
           <div className="text-center lg:text-left">
             <h1 className="text-5xl font-bold">Contact Us!</h1>
             <p className="py-6">

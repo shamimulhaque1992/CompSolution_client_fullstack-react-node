@@ -1,4 +1,5 @@
 import React from "react";
+import Announcement from "./Banner/Announcement/Announcement";
 import Banner from "./Banner/Banner";
 import BasicInfo from "./BasicInfo/BasicInfo";
 import BuisnessSummary from "./BuisnessSummary/BuisnessSummary";
@@ -11,14 +12,14 @@ import Tools from "./Tools/Tools";
 const Home = () => {
   return (
     <div>
+      <Announcement></Announcement>
       <Banner></Banner>
-
-      <BasicInfo></BasicInfo>
       <Tools></Tools>
       <BuisnessSummary></BuisnessSummary>
       <FeatureService></FeatureService>
       <TakeService></TakeService>
       <Reviews></Reviews>
+      <BasicInfo></BasicInfo>
       <ContactUsHome></ContactUsHome>
     </div>
   );

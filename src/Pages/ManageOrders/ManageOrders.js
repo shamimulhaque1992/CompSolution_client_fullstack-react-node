@@ -17,7 +17,6 @@ const ManageOrders = () => {
       },
     }).then((res) => res.json())
   );
-  console.log(orders);
 
   if (isloading) {
     return <Loading></Loading>;

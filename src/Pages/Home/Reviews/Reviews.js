@@ -24,7 +24,7 @@ const Reviews = () => {
 
   // console.log(reviews);
   return (
-    <div className="reviewContainer container mx-auto mt-20">
+    <div className="reviewContainer w-11/12 mx-auto mt-20">
       <div className="sectionHeader mb-10">
         <h1 className="text-xl text-left text-cyan-400">Some Thoughts</h1>
         <h1 className="text-3xl text-left">

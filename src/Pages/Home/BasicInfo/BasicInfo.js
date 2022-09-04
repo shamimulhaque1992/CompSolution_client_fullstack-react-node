@@ -1,53 +1,70 @@
-import React from "react";
+import React, { useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-cube";
+import "swiper/css/pagination";
+import styles from "./basicInfo.module.css";
+import basicbg from "../../../assets/images/office.gif";
+import location from "../../../assets/images/locationbg.gif";
+import { Keyboard, Pagination, Navigation } from "swiper";
+import MovingComponent from "react-moving-text";
+import GoogleMapContainer from "./GoogleMapContainer/GoogleMapContainer";
 
 const BasicInfo = () => {
   return (
-    <div className="container md:px-3 mx-auto flex flex-col items-center justify-center md:flex-row gap-10 mb-20 mt-52">
-      <div className="card h-full sm:w-10/12 md:w-6/12 lg:card bg-cyan-200 shadow-xl">
-        <div className="card-body w-full flex-col items-center justify-between">
-          <div className="">
-            <i className="fa-solid fa-door-open text-5xl "></i>
-          </div>
-          <div className="w-full mx-auto">
-            <h2 className="card-title justify-center">Opening Hours</h2>
-            <div className="text-center">
-              <p>Sat: 8:00AM-10:30PM</p>
-              <p>Sun: 8:00AM-10:30PM</p>
-              <p>Mon: 8:00AM-10:30PM</p>
-              <p>Tue: 8:00AM-10:30PM</p>
-              <p>Wed: 8:00AM-10:30PM</p>
-              <p>Thu: 8:00AM-10:30PM</p>
-              <p>
-                Fri: <span className="text-error">Closed</span>
-              </p>
+    <div className="w-11/12 shadow-xl mx-auto mt-10 mb-10">
+      <MovingComponent
+        className="sm:text-2xl md:text-3xl lg:text-4xl text-indigo-700"
+        type="fadeIn"
+        duration="1000ms"
+        delay="0s"
+        direction="normal"
+        timing="ease"
+        iteration="infinite"
+        fillMode="none"
+      >
+        Visite Us
+      </MovingComponent>
+      <Swiper
+        slidesPerView={1}
+        loop={true}
+        spaceBetween={30}
+        keyboard={{
+          enabled: true,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Keyboard, Pagination, Navigation]}
+        className="mySwiper"
+      >
+        <SwiperSlide className="flex justify-around sm:items-center md:items-end sm:flex-col md:flex-row">
+          <img className="w-96" src={basicbg} alt="" />
+          <div class="card lg:w-5/12 bg-base-100 shadow-xl sm:mb-10 md:mb-0">
+            <div class="card-body">
+              <i class="fa-solid sm:text-sm md:text-lg lg:text-xl xl:text-4xl fa-door-open"></i>
+              <h2 class="sm:text-lg lg:text-2xl font-bold text-center">Opening Hours</h2>
+              <div className="text-left mx-auto">
+                <p>Saturday: 9AM - 10PM</p>
+                <p>Sunday: 9AM - 10PM</p>
+                <p>Monday: 9AM - 10PM</p>
+                <p>Tuesday: 9AM - 10PM</p>
+                <p>Wednesday: 9AM - 10PM</p>
+                <p>Thursday: 9AM - 10PM</p>
+                <p className="text-error">Friday: Closed</p>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </SwiperSlide>
+        <SwiperSlide className="flex justify-around items-center sm:flex-col md:flex-row">
+          <img className={styles.locationimg} src={location} alt="" />
 
-      <div className="card h-full sm:w-10/12 md:w-3/12 lg:card bg-gray-500 shadow-xl">
-        <div className="card-body flex-col items-center">
-          <div className="">
-            <i className="fa-solid fa-location-dot text-5xl text-white"></i>
+          <div class="">
+            <GoogleMapContainer></GoogleMapContainer>
           </div>
-          <div className="text-white">
-            <h2 className="card-title justify-center">Location</h2>
-            <p>We main branch is in Dhaka!</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="card h-full sm:w-10/12 md:w-3/12 lg:card bg-emerald-300 shadow-xl">
-        <div className="card-body flex-col items-center">
-          <div className="">
-            <i className="fa-solid fa-square-phone text-5xl"></i>
-          </div>
-          <div className="">
-            <h2 className="card-title justify-center">Contact us</h2>
-            <p>We are always at your service!</p>
-          </div>
-        </div>
-      </div>
+        </SwiperSlide>
+      </Swiper>
     </div>
   );
 };
