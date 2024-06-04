@@ -10,7 +10,7 @@ const useToken = (user) => {
     const photo = user?.user?.photoURL;
     const currentUser = { email: email, name: name, photo: photo };
     if (email) {
-      fetch(`https://serene-shelf-91638.herokuapp.com/user/${email}`, {
+      fetch(`https://com-solution-server.vercel.app/user/${email}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(currentUser),

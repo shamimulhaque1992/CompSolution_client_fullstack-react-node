@@ -23,7 +23,7 @@ const CheckoutForm = ({ order }) => {
   } = order;
 
   useEffect(() => {
-    fetch("https://serene-shelf-91638.herokuapp.com/create-payment-intent", {
+    fetch("https://com-solution-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -87,7 +87,7 @@ const CheckoutForm = ({ order }) => {
         transactionId: paymentIntent.id,
         paymentStatus: "Paid",
       };
-      fetch(`https://serene-shelf-91638.herokuapp.com/orders/${_id}`, {
+      fetch(`https://com-solution-server.vercel.app/orders/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",

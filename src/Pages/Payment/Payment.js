@@ -12,7 +12,7 @@ const stripePromise = loadStripe(
 
 const Payment = () => {
   const { id } = useParams();
-  const url = `https://serene-shelf-91638.herokuapp.com/orders/${id}`;
+  const url = `https://com-solution-server.vercel.app/orders/${id}`;
 
   const { data: order, isLoading } = useQuery(["orders", id], () =>
     fetch(url, {

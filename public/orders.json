@@ -1,1 +1,14 @@
-{"_id":{"$oid":"628cf91548db0ae299aab390"},"productName":"Calvin Klein","productID":"628cba25d7bbb2c89d262bf0","productPrice":"10000","productDescription":"Calvin Klein is a brand that is not only known for its fragrances, but their apparel, watches and undergarments as well. They have been around for many years, and what has worked for them throughout the years is the affordability of their products. Some of their most known fragrances are CK One, Eternity, and Obsession. Characterized by its unique scents, most of the Calvin Klein perfumes are unisex, which makes them more accessible to a larger group of people.","customerName":"tamjeed","customerEmail":"tamjeed15-2233@diu.edu.bd","customerAddress":"Dhaka","customerPhone":"01911799590","porductQuantity":"5000","paymentMethod":"bikash","paymentStatus":"Delevered"}
+{
+  "_id": { "$oid": "628cf91548db0ae299aab390" },
+  "productName": "Calvin Klein",
+  "productID": "628cba25d7bbb2c89d262bf0",
+  "productPrice": "10000",
+  "productDescription": "Calvin Klein is a brand that is not only known for its fragrances, but their apparel, watches and undergarments as well. They have been around for many years, and what has worked for them throughout the years is the affordability of their products. Some of their most known fragrances are CK One, Eternity, and Obsession. Characterized by its unique scents, most of the Calvin Klein perfumes are unisex, which makes them more accessible to a larger group of people.",
+  "customerName": "tamjeed",
+  "customerEmail": "tamjeed15-2233@diu.edu.bd",
+  "customerAddress": "Dhaka",
+  "customerPhone": "01911799590",
+  "porductQuantity": "5000",
+  "paymentMethod": "bikash",
+  "paymentStatus": "Delevered"
+}

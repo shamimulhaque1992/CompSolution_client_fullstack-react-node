@@ -10,7 +10,7 @@ const ManageOrders = () => {
     isloading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("https://serene-shelf-91638.herokuapp.com/order/availabel", {
+    fetch("https://com-solution-server.vercel.app/order/availabel", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,7 +25,7 @@ const ManageOrders = () => {
     const status = {
       paymentStatus: "Delevered",
     };
-    fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
+    fetch(`https://com-solution-server.vercel.app/status/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -46,7 +46,7 @@ const ManageOrders = () => {
       "Are you sure you want to remove this order?"
     );
     if (conferm) {
-      fetch(`https://serene-shelf-91638.herokuapp.com/orders/${_id}`, {
+      fetch(`https://com-solution-server.vercel.app/orders/${_id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
@@ -61,7 +61,7 @@ const ManageOrders = () => {
           console.log(data);
         });
     }
-    /* fetch(`https://serene-shelf-91638.herokuapp.com/status/${_id}`, {
+    /* fetch(`https://com-solution-server.vercel.app/status/${_id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

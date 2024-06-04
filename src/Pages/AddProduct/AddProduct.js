@@ -10,7 +10,7 @@ const AddProduct = () => {
     reset,
   } = useForm();
   const onSubmit = async (data) => {
-    const url = `https://serene-shelf-91638.herokuapp.com/tools`;
+    const url = `https://com-solution-server.vercel.app/tools`;
     fetch(url, {
       method: "POST",
       headers: { "content-type": "application/json" },

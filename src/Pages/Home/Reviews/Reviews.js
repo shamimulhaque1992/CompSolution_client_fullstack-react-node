@@ -8,7 +8,7 @@ const Reviews = () => {
     isloading,
     refetch,
   } = useQuery("orders", () =>
-    fetch("https://serene-shelf-91638.herokuapp.com/reviews", {
+    fetch("https://com-solution-server.vercel.app/reviews", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

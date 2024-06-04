@@ -16,7 +16,7 @@ const Navbar = () => {
     isloading,
     refetch,
   } = useQuery("tools", () =>
-    fetch(`https://serene-shelf-91638.herokuapp.com/orders/${email}`, {
+    fetch(`https://com-solution-server.vercel.app/orders/${email}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

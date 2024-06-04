@@ -18,7 +18,7 @@ const MyOrders = () => {
     isloading,
     refetch,
   } = useQuery("orders", () =>
-    fetch(`https://serene-shelf-91638.herokuapp.com/order?customeremail=${user?.email}`, {
+    fetch(`https://com-solution-server.vercel.app/order?customeremail=${user?.email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -41,7 +41,7 @@ const MyOrders = () => {
   const handleDelete = (id) => {
     const conferm = window.confirm("Are you sure you want to delete?");
     if (conferm) {
-      fetch(`https://serene-shelf-91638.herokuapp.com/orders/${id}`, {
+      fetch(`https://com-solution-server.vercel.app/orders/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -60,7 +60,7 @@ const MyOrders = () => {
 
   /* useEffect(() => {
     if (user) {
-      fetch(`https://serene-shelf-91638.herokuapp.com/order?customeremail=${user.email}`, {
+      fetch(`https://com-solution-server.vercel.app/order?customeremail=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,

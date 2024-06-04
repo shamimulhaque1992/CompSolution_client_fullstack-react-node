@@ -4,7 +4,7 @@ const useTools = () => {
   const [tools, setTools] = useState([]);
 
   useEffect(() => {
-    fetch("https://serene-shelf-91638.herokuapp.com/tools")
+    fetch("https://com-solution-server.vercel.app/tools")
       .then((response) => response.json())
       .then((data) => setTools(data));
   }, []);

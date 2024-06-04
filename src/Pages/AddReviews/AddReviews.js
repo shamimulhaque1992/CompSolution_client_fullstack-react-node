@@ -10,7 +10,7 @@ const AddReviews = () => {
     reset,
   } = useForm();
   const onSubmit = async (data) => {
-    const url = `https://serene-shelf-91638.herokuapp.com/reviews`;
+    const url = `https://com-solution-server.vercel.app/reviews`;
     fetch(url, {
       method: "POST",
       headers: {

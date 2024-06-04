@@ -5,7 +5,7 @@ import Loading from "../Shared/Loading/Loading";
 
 const ManageUsers = () => {
   const { data: users, isloading,refetch } = useQuery("users", () =>
-    fetch("https://serene-shelf-91638.herokuapp.com/user", {
+    fetch("https://com-solution-server.vercel.app/user", {
         headers: {
             authorization: `Bearer ${localStorage.getItem("accessToken")}`
         }
@@ -16,7 +16,7 @@ const ManageUsers = () => {
   }
   const makeAdmin = (user) =>{
       const {email} =  user;
-      const url = `https://serene-shelf-91638.herokuapp.com/user/admin/${email}`
+      const url = `https://com-solution-server.vercel.app/user/admin/${email}`
       console.log(url);
       fetch(url,{
           method: 'PUT',
@@ -44,7 +44,7 @@ const ManageUsers = () => {
 
   const removeUsers = (user)=>{
     const email = user.email;
-    const url = `https://serene-shelf-91638.herokuapp.com/user/${email}`;
+    const url = `https://com-solution-server.vercel.app/user/${email}`;
       fetch(url, {
         method: "DELETE",
         headers: {

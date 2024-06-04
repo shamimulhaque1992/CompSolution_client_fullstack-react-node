@@ -19,7 +19,7 @@ const MyProfileCont = ({ userss, refetch }) => {
       mstatus: data.mstatus,
     };
 
-    fetch(`https://serene-shelf-91638.herokuapp.com/user/${email}`, {
+    fetch(`https://com-solution-server.vercel.app/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

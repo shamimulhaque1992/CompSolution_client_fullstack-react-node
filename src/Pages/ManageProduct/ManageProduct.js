@@ -9,7 +9,7 @@ const ManageProduct = () => {
     isloading,
     refetch,
   } = useQuery("tools", () =>
-    fetch("https://serene-shelf-91638.herokuapp.com/tools", {
+    fetch("https://com-solution-server.vercel.app/tools", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,7 +26,7 @@ const ManageProduct = () => {
       "Are you sure you want to remove this order?"
     );
     if (conferm) {
-      fetch(`https://serene-shelf-91638.herokuapp.com/tools/${_id}`, {
+      fetch(`https://com-solution-server.vercel.app/tools/${_id}`, {
         method: "DELETE",
         headers: {
           "content-type": "application/json",

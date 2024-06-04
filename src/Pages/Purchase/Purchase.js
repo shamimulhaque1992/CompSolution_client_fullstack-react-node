@@ -20,14 +20,13 @@ const Purchase = () => {
 
   const toolsQuantity = tools.quantity;
   const minimumOrder = tools.minimumquantity;
-  const url = `https://serene-shelf-91638.herokuapp.com/tools/${toolId}`;
+  const url = `https://com-solution-server.vercel.app/tools/${toolId}`;
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => setTools(data));
-  }, [url, tools]);
+  }, [url]);
 
-  
   const quantityControlar = () => {
     const q = document.getElementById("quantity");
     const x = parseInt(q.value);
@@ -42,7 +41,6 @@ const Purchase = () => {
     }
   };
   const onSubmit = async (data) => {
-
     const orders = {
       productName: tools.title,
       productID: tools._id,
@@ -59,7 +57,7 @@ const Purchase = () => {
     };
     console.log(orders);
 
-    fetch("https://serene-shelf-91638.herokuapp.com/order", {
+    fetch("https://com-solution-server.vercel.app/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",

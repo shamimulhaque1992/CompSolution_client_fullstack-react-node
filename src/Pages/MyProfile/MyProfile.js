@@ -14,7 +14,7 @@ const MyProfile = () => {
     isloading,
     refetch,
   } = useQuery("userss", () =>
-    fetch(`https://serene-shelf-91638.herokuapp.com/user/${email}`, {
+    fetch(`https://com-solution-server.vercel.app/user/${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -37,7 +37,7 @@ const MyProfile = () => {
 
   /* const [users, setUsers] = useState([]);
   useEffect(() => {
-    const url = `https://serene-shelf-91638.herokuapp.com/user/${email}`;
+    const url = `https://com-solution-server.vercel.app/user/${email}`;
     fetch(url, {
       method: "GET",
       headers: {
